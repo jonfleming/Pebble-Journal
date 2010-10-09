@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>creationDate</string>
+		<string>modifiedDate</string>
+		<string>title</string>
+	</array>
+	<array>
+		<string>displayOrder</string>
+		<string>priority</string>
+		<string>dueDate</string>
+	</array>
+	<array>
+		<string>Date Created</string>
+		<string>Date Modified</string>
+		<string>Title</string>
+	</array>
+	<array>
+		<string>Drag Drop</string>
+		<string>Priority</string>
+		<string>Due Date</string>
+	</array>
+</array>
+</plist>
