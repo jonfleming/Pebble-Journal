@@ -1,6 +1,6 @@
 //
 //  RootViewController.m
-//  Pebble
+//  Pebble-Journal
 //
 //  Created by techion on 6/23/10.
 //  Copyright Jon Fleming 2010. All rights reserved.
