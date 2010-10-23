@@ -30,9 +30,9 @@
 	};
 	28042008108E984D000629CD /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1172, 10244}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1160, 10244}}";
 			sepNavSelRange = "{46, 0}";
-			sepNavVisRange = "{0, 1772}";
+			sepNavVisRange = "{0, 389}";
 			sepNavWindowFrame = "{{15, 86}, {1394, 787}}";
 		};
 	};
@@ -268,14 +268,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 309041142;
-			PBXWorkspaceStateSaveDate = 309041142;
+			PBXPerProjectTemplateStateSaveDate = 309484202;
+			PBXWorkspaceStateSaveDate = 309484202;
 		};
 		perUserProjectItems = {
+			C779E6DC12725AC100A309A0 /* PBXTextBookmark */ = C779E6DC12725AC100A309A0 /* PBXTextBookmark */;
+			C779E6DD12725AD100A309A0 /* PBXTextBookmark */ = C779E6DD12725AD100A309A0 /* PBXTextBookmark */;
+			C779E6E612725B1800A309A0 /* PBXTextBookmark */ = C779E6E612725B1800A309A0 /* PBXTextBookmark */;
 			C782F59712616A28004A8FBB = C782F59712616A28004A8FBB /* PBXTextBookmark */;
 			C782F59812616A28004A8FBB = C782F59812616A28004A8FBB /* PBXTextBookmark */;
 			C782F59E12617DE9004A8FBB = C782F59E12617DE9004A8FBB /* PBXTextBookmark */;
-			C78A2F25126B97FD00573C2C /* PBXTextBookmark */ = C78A2F25126B97FD00573C2C /* PBXTextBookmark */;
+			C78A2F25126B97FD00573C2C = C78A2F25126B97FD00573C2C /* PBXTextBookmark */;
 		};
 		sourceControlManager = C78B43FE11D2B2D30005358D /* Source Control */;
 		userBookmarkGroup = C7854AE411DBA00C00A303C1 /* PBXBookmarkGroup */;
@@ -619,6 +622,36 @@
 			sepNavVisRange = "{764, 1365}";
 			sepNavWindowFrame = "{{38, 65}, {1394, 787}}";
 		};
+	};
+	C779E6DC12725AC100A309A0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28042008108E984D000629CD /* RootViewController.m */;
+		name = "RootViewController.m: 3";
+		rLen = 0;
+		rLoc = 46;
+		rType = 0;
+		vrLen = 2220;
+		vrLoc = 0;
+	};
+	C779E6DD12725AD100A309A0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28042008108E984D000629CD /* RootViewController.m */;
+		name = "RootViewController.m: 3";
+		rLen = 0;
+		rLoc = 46;
+		rType = 0;
+		vrLen = 2192;
+		vrLoc = 0;
+	};
+	C779E6E612725B1800A309A0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28042008108E984D000629CD /* RootViewController.m */;
+		name = "RootViewController.m: 3";
+		rLen = 0;
+		rLoc = 46;
+		rType = 0;
+		vrLen = 389;
+		vrLoc = 0;
 	};
 	C77B13A61232EFEF005385A4 /* Pebble 7.xcdatamodel */ = {
 		uiCtxt = {
