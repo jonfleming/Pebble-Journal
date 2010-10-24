@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 
 	sort = -1;
 }

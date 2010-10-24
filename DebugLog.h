@@ -16,7 +16,7 @@
 #define D_FINE		8	//superflous
 #define D_VERBOSE	9
 
-#define D_LEVEL		D_TRACE
+#define D_LEVEL		D_INFO
 
 #ifdef DEBUG
 	#define DebugLog(args...) _DebugLog(args);

@@ -185,7 +185,7 @@
 	// Put anything that starts with this substring into the choices array
 	// The items in this array will show up in the table view
 	[tagPickList.choices removeAllObjects];
-	DebugLog(D_VERBOSE, @"updateChoices substring:%@", substring);
+	DebugLog(D_INFO, @"updateChoices substring:%@", substring);
 	for (NSString *tag in tagList) {
 		DebugLog(D_VERBOSE, @"  comparing tag:%@", tag);
 
@@ -210,7 +210,7 @@
 #pragma mark -
 #pragma mark Text Field Delegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 
 	if (textField.tag == 1) {
 		NSString *substring = [NSString stringWithString:textField.text];
@@ -227,7 +227,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	[tagPickList dismissPopover];
 
 	NSInteger nextTag = textField.tag + 1;

@@ -66,10 +66,10 @@
 											formatDate:([listViewController.detailViewController.item.sortField isEqualToString:@"modifiedDate"] ?
 														 noteItem.modifiedDate : noteItem.creationDate)];
 	if ([notepadViewController.notepadView.text length] == 0) {
-		DebugLog(D_FINER, @"=== notepadView.txt is empty  %@    %@", noteItem.title, noteItem.summary);
+		DebugLog(D_FINE, @"=== notepadView.txt is empty  %@    %@", noteItem.title, noteItem.summary);
 	}
 	else {
-		DebugLog(D_FINER, @"--- %@    %@", noteItem.title, noteItem.summary);
+		DebugLog(D_FINE, @"--- %@    %@", noteItem.title, noteItem.summary);
 	}	
 }
 
@@ -166,30 +166,30 @@
 	
 	NotelistCell *cell = (NotelistCell *)selectedCell;
 	if (cell == nil) {
-		DebugLog(D_INFO, @"   selectedCell is nil. Exiting updateObject.");
+		DebugLog(D_FINER, @"   selectedCell is nil. Exiting updateObject.");
 		return;
 	}
 
 	DetailViewController *detailViewController = listViewController.detailViewController;
 	if (detailViewController == nil) {
-		DebugLog(D_INFO, @"   detailViewController is nil. Exiting updateObject.");
+		DebugLog(D_FINER, @"   detailViewController is nil. Exiting updateObject.");
 		return;
 	}
 	
 	NotepadViewController *notepadViewController = detailViewController.notepadViewController;
 	if (notepadViewController == nil) {
-		DebugLog(D_INFO, @"   notepadViewController is nil. Exiting updateObject.");
+		DebugLog(D_FINER, @"   notepadViewController is nil. Exiting updateObject.");
 		return;
 	}
 	
 	if (notepadViewController.notepadView == nil) {
-		DebugLog(D_INFO, @"   notepadView is nil. Exiting updateObject.");
+		DebugLog(D_FINER, @"   notepadView is nil. Exiting updateObject.");
 		return;
 	}
 	
 	noteItem.modifiedDate =[NSDate date];
 	noteItem.note = notepadViewController.notepadView.text;
-	DebugLog(D_INFO, @"noteItem: %@ \ncell: %@", noteItem, cell.title.text);
+	DebugLog(D_FINER, @"noteItem: %@ \ncell: %@", noteItem, cell.title.text);
 	NSArray *array = [[noteItem.note substringToIndex:MIN(200,[noteItem.note length])] componentsSeparatedByString:@"\n"];
 	NSString *title = [array objectAtIndex:0];
 	noteItem.title = title;
@@ -204,7 +204,7 @@
 		cell.summary.text = summary;
 	}
 	
-	DebugLog(D_INFO, @"=== %@    %@", noteItem.title, noteItem.summary);
+	DebugLog(D_FINER, @"=== %@    %@", noteItem.title, noteItem.summary);
 }
 
 // Customize the appearance of table view cells.
@@ -275,7 +275,7 @@
 }
 
 - (void)panHandler:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 
 	switch (recognizer.state) {
 		case UIGestureRecognizerStateBegan:
@@ -308,7 +308,7 @@
 }
 
 - (void)dropListItem:(UITableViewCell *)cell at:(CGPoint) location {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 	DebugLog(D_VERBOSE, @"--- location: %f, %f", location.x, location.y);
 	NSIndexPath *sourceIndexPath = [self.tableView indexPathForCell:cell];
 	NoteItem *movingListItem = [fetchedResultsController objectAtIndexPath:sourceIndexPath];
@@ -407,7 +407,7 @@
 			NSPredicate *searchMatch = [NSPredicate predicateWithFormat:@"(note CONTAINS[c] %@)", theSearchBar.text];
 			predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:predicate, searchMatch, nil]];
 			
-			DebugLog(D_INFO, @"--- filtered on %@", theSearchBar.text);
+			DebugLog(D_FINER, @"--- filtered on %@", theSearchBar.text);
 		}
 	}
 	else {
@@ -441,7 +441,7 @@
 	
 	[dateDescriptor release];
 	[sortDescriptors release];
-	DebugLog(D_INFO, @"--- NoteTable predicate: %@  sortField: %@", item.itemTitle, item.sortField);
+	DebugLog(D_FINER, @"--- NoteTable predicate: %@  sortField: %@", item.itemTitle, item.sortField);
 }
 
 - (NSFetchedResultsController *)createFetchedResultsController:(NSFetchRequest *)fetchRequest {

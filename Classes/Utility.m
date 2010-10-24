@@ -35,6 +35,15 @@
 	return formattedDateString;
 }
 
++ (NSString *)formatTime:(NSDate *)date {
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
+	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+	NSString *formattedDateString = [dateFormatter stringFromDate:date];
+	
+	return formattedDateString;
+}
+
 + (NSString *)intervalToString:(NSDate *)date {
 	NSString *returnValue = @"";
 	NSCalendar *cal = [NSCalendar currentCalendar]; 

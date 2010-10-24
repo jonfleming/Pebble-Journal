@@ -38,7 +38,7 @@
 	[self.view addSubview:sortOptions.tableView];
 	self.navigationItem.title = @"Options";
 	sortOptions.tableView.frame = CGRectMake(0.0, 44.0, 307.0, 254.0);
-	DebugLog(D_INFO, @"--- Setting sortOptions frame: %@", NSStringFromCGRect(sortOptions.tableView.frame));
+	DebugLog(D_FINER, @"--- Setting sortOptions frame: %@", NSStringFromCGRect(sortOptions.tableView.frame));
 }
 
 - (void)viewDidLoad {

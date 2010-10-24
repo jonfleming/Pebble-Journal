@@ -17,6 +17,7 @@
 
 + (int)viewIndex:(int)view;
 + (NSString *)formatDate:(NSDate *)date;
++ (NSString *)formatTime:(NSDate *)date;
 + (NSString *)intervalToString:(NSDate *)date;
 + (UIColor *)colorForDueDate:(NSDate *)date;
 + (NSString *)formatBool:(BOOL)value;

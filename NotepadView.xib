@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="56"/>
+			<integer value="41"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -121,6 +121,25 @@
 								<reference key="IBUIToolbar" ref="355285354"/>
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
+							<object class="IBUIBarButtonItem" id="99725550">
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">Clock_pp.png</string>
+								</object>
+								<double key="IBUIImageInsets.top">0.0</double>
+								<double key="IBUIImageInsets.bottom">5</double>
+								<double key="IBUIImageInsets.left">0.0</double>
+								<double key="IBUIImageInsets.right">0.0</double>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIStyle">1</int>
+								<reference key="IBUIToolbar" ref="355285354"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="940379063">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<float key="IBUIWidth">42</float>
+								<reference key="IBUIToolbar" ref="355285354"/>
+								<int key="IBUISystemItemIdentifier">6</int>
+							</object>
 							<object class="IBUIBarButtonItem" id="733206757">
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
@@ -222,6 +241,14 @@
 					</object>
 					<int key="connectionID">57</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">timestamp:</string>
+						<reference key="source" ref="99725550"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">61</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -272,6 +299,8 @@
 							<reference ref="74197278"/>
 							<reference ref="733206757"/>
 							<reference ref="127102886"/>
+							<reference ref="99725550"/>
+							<reference ref="940379063"/>
 						</object>
 						<reference key="parent" ref="89612518"/>
 					</object>
@@ -305,6 +334,17 @@
 						<reference key="object" ref="127102886"/>
 						<reference key="parent" ref="355285354"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">59</int>
+						<reference key="object" ref="99725550"/>
+						<reference key="parent" ref="355285354"/>
+						<string key="objectName">Bar Button Item (Timestamp)</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">60</int>
+						<reference key="object" ref="940379063"/>
+						<reference key="parent" ref="355285354"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -324,6 +364,8 @@
 					<string>51.IBPluginDependency</string>
 					<string>52.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
+					<string>59.IBPluginDependency</string>
+					<string>60.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -335,6 +377,8 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{547, 4}, {783, 1002}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -358,7 +402,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">58</int>
+			<int key="maxID">61</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -531,15 +575,19 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>barItem</string>
 							<string>itemTitle</string>
 							<string>itemType</string>
+							<string>passwordProtect</string>
 							<string>tags</string>
 							<string>view</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UINavigationItem</string>
 							<string>UITextField</string>
 							<string>UISegmentedControl</string>
+							<string>UISwitch</string>
 							<string>UITextField</string>
 							<string>UIView</string>
 						</object>
@@ -548,13 +596,19 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>barItem</string>
 							<string>itemTitle</string>
 							<string>itemType</string>
+							<string>passwordProtect</string>
 							<string>tags</string>
 							<string>view</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">barItem</string>
+								<string key="candidateClassName">UINavigationItem</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">itemTitle</string>
 								<string key="candidateClassName">UITextField</string>
@@ -562,6 +616,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">itemType</string>
 								<string key="candidateClassName">UISegmentedControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">passwordProtect</string>
+								<string key="candidateClassName">UISwitch</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">tags</string>
@@ -614,9 +672,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>editTableView:</string>
 							<string>insertNewObject:</string>
+							<string>showOptions:</string>
+							<string>showProtect:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -627,6 +689,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>editTableView:</string>
 							<string>insertNewObject:</string>
+							<string>showOptions:</string>
+							<string>showProtect:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -636,6 +700,14 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">insertNewObject:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showOptions:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showProtect:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -701,9 +773,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>insertNewObject:</string>
 							<string>showNotelist:</string>
+							<string>timestamp:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -714,6 +788,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>insertNewObject:</string>
 							<string>showNotelist:</string>
+							<string>timestamp:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -723,6 +798,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">showNotelist:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">timestamp:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -797,7 +876,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>detailViewController</string>
-							<string>editViewController</string>
+							<string>itemViewController</string>
 							<string>theSearchBar</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -812,7 +891,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>detailViewController</string>
-							<string>editViewController</string>
+							<string>itemViewController</string>
 							<string>theSearchBar</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -822,7 +901,7 @@
 								<string key="candidateClassName">DetailViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">editViewController</string>
+								<string key="name">itemViewController</string>
 								<string key="candidateClassName">ItemViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -1086,6 +1165,14 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">UINavigationItem</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UINavigationBar.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">UIPopoverController</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="491294303">
@@ -1128,6 +1215,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UISegmentedControl.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UISwitch</string>
+					<string key="superclassName">UIControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UISwitch.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1239,11 +1334,13 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>Clock_pp.png</string>
 				<string>Spiral1.png</string>
 				<string>icon_list_bullets.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{26, 26}</string>
 				<string>{49, 1024}</string>
 				<string>{30, 30}</string>
 			</object>

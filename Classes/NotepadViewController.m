@@ -74,7 +74,7 @@
 }
 
 - (IBAction)swipeRight:(UIPanGestureRecognizer *)sender {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 	NSIndexPath *indexPath = [detailViewController.notelistViewController indexPathForSelectedCell];
 	DebugLog(D_VERBOSE, @"--- indexPath: %@:", indexPath); 
 	if (indexPath) {
@@ -87,7 +87,7 @@
 }
 
 - (IBAction)swipeLeft:(UIPanGestureRecognizer *)sender {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 
 	NSIndexPath *indexPath = [detailViewController.notelistViewController indexPathForSelectedCell];
 	DebugLog(D_VERBOSE, @"--- indexPath: %@:", indexPath); 
@@ -175,13 +175,29 @@
 
 #pragma mark -
 #pragma mark Toolbar button handlers
+- (IBAction)timestamp:(id)sender {
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	NSString *text = [Utility formatTime:[NSDate date]];
+
+	// Save a copy of the system pasteboard's items
+	UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
+	NSArray* items = [pasteboard.items copy];
+	
+	// Paste the text
+	pasteboard.string = [text stringByAppendingString:@"\n"];
+	[notepadView paste: notepadView];
+	
+	// Restore the system pasteboard to its original items.
+	pasteboard.items = items;	
+	[items release];
+}
+
 - (IBAction)showNotelist:(id)sender {
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	[detailViewController saveNote];
 	[detailViewController.notelistViewController.tableViewController.tableView reloadData]; 
 	[detailViewController showView:NOTELIST];
 }
-
 
 #pragma mark -
 #pragma mark Handle Line Drawing

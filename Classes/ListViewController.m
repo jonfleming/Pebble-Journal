@@ -102,7 +102,7 @@
 #pragma mark -
 #pragma mark Toolbar button handlers
 - (IBAction)showProtect:(id)sender {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	if ([self functionDisabled]) {
 		return;
 	}
@@ -121,6 +121,7 @@
 	options.protectViewController.protect.on = protect;
 	
 	UIBarButtonItem *button = (UIBarButtonItem *)sender;	
+	[self.detailViewController toolbarEnabled:NO];
 	[popover presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
@@ -156,17 +157,18 @@
 	}
 	
 	[self initOptions:options];
-	UIBarButtonItem *button = (UIBarButtonItem *)sender;	
+	UIBarButtonItem *button = (UIBarButtonItem *)sender;
+	[self.detailViewController toolbarEnabled:NO];
 	[popover presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 - (void)initOptions:(Options *)options {
-	DebugLog(D_INFO, @"%s sortField: %@", __FUNCTION__,detailViewController.item.sortField);
+	DebugLog(D_FINER, @"%s sortField: %@", __FUNCTION__,detailViewController.item.sortField);
 	
 	BOOL ascending = FALSE;
 	int sort = 0;
 	if (detailViewController.item.sortField != nil) {
-		DebugLog(D_INFO, @"sortField: %@", detailViewController.item.sortField);
+		DebugLog(D_FINER, @"sortField: %@", detailViewController.item.sortField);
 		sort = [sortFields indexOfObject:detailViewController.item.sortField];
 		if (sort == NSNotFound) {
 			sort = 0;
@@ -182,7 +184,10 @@
 }
 
 - (void)popoverControllerDidDismissPopover: (UIPopoverController *)popoverController {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	
+	[self.detailViewController toolbarEnabled:YES];
+	
 	Options *options = (Options *)popoverController.contentViewController;
 	if (options.sortOptions != nil) {
 		
@@ -190,13 +195,13 @@
 		detailViewController.item.sortAscending = [NSNumber numberWithBool:options.sortOptions.ascending];
 		detailViewController.item.showCompleted = [NSNumber numberWithBool:options.sortOptions.showCompleted.on];
 
-		DebugLog(D_INFO, @"--- sortField: %@  ascending:%@", detailViewController.item.sortField, YESNO(options.sortOptions.ascending));
+		DebugLog(D_FINER, @"--- sortField: %@  ascending:%@", detailViewController.item.sortField, YESNO(options.sortOptions.ascending));
 		
 		[self.tableViewController fetchedResultsControllerInit];
 		[self.tableViewController.tableView reloadData];		
 	}
 	else {
-		DebugLog(D_INFO, @"--- protect:%@", YESNO(options.protectViewController.protect.on));
+		DebugLog(D_FINER, @"--- protect:%@", YESNO(options.protectViewController.protect.on));
 
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		NSNumber *protect = [NSNumber numberWithBool:options.protectViewController.protect.on];

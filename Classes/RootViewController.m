@@ -76,8 +76,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
     [super viewWillAppear:animated];
+	
+	if (detailViewController.popoverController != nil) {
+		[detailViewController toolbarEnabled:NO];
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -108,11 +112,15 @@
 	
 }
 
-/*
 - (void)viewWillDisappear:(BOOL)animated {
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
     [super viewWillDisappear:animated];
+
+	if (detailViewController.popoverController != nil) {
+		[detailViewController toolbarEnabled:YES];
+	}
 }
- */
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -139,14 +147,14 @@
 }
 
 - (void)updateBadgeCount:(NSIndexPath *)indexPath {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 	// cellForRowAtIndexPath calls configureCell which calls setBadge
 	TDBadgedCell *cell = (TDBadgedCell *)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
 	[cell setNeedsLayout];
 }
 
 - (void)updateCurrentBadgeCount {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 	TDBadgedCell *cell = (TDBadgedCell *)[detailViewController currentCell];
 	[self setBadge:cell item:detailViewController.item];
 	[cell setNeedsLayout];
@@ -188,8 +196,8 @@
 	
 	if (indexPath.row == lastItemPath.row && indexPath.section == lastItemPath.section)
 	{
-		DebugLog(D_INFO, @"--- lastItemPath: %@", lastItemPath);
-		DebugLog(D_INFO, @"--- Item: %@  row: %d", theItem.itemTitle, [theItem.lastNoteItemRow intValue]);
+		DebugLog(D_FINER, @"--- lastItemPath: %@", lastItemPath);
+		DebugLog(D_FINER, @"--- Item: %@  row: %d", theItem.itemTitle, [theItem.lastNoteItemRow intValue]);
 
 		// triggers ConfigureView
 		if (detailViewController.item != theItem) {
@@ -372,7 +380,7 @@
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	DebugLog(D_INFO, @"%s %@", __FUNCTION__, alertView.title);
+	DebugLog(D_FINER, @"%s %@", __FUNCTION__, alertView.title);
 	int prompt = [[RootViewController passwordPrompts] indexOfObject:alertView.title];
 				   
 	switch (prompt) {
@@ -519,7 +527,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	
 	// Save pending changes
    	//[detailViewController saveNote];
@@ -540,6 +548,7 @@
 	
 	if (detailViewController.popoverController != nil) {
         [detailViewController.popoverController dismissPopoverAnimated:YES];
+		[detailViewController toolbarEnabled:YES];
     }		
 }
 
@@ -619,12 +628,12 @@
 	// Set predicate -- filter based on search text
 	NSPredicate *predicate;
 	if (protect) {
-		DebugLog(D_INFO, @"--- Setting predicate to return 0 results");
+		DebugLog(D_FINER, @"--- Setting predicate to return 0 results");
 		predicate = [NSPredicate predicateWithFormat: @"FALSEPREDICATE"];
 	}
 	else {
 		if ([theSearchBar.text length] > 0) {
-			DebugLog(D_INFO, @"---Setting predicate to: %@  scope %d", theSearchBar.text, theSearchBar.selectedScopeButtonIndex);
+			DebugLog(D_FINER, @"---Setting predicate to: %@  scope %d", theSearchBar.text, theSearchBar.selectedScopeButtonIndex);
 			switch (theSearchBar.selectedScopeButtonIndex) {
 				case 0: // Tags
 					predicate = [NSPredicate predicateWithFormat: @"tags CONTAINS[c] %@", theSearchBar.text];
@@ -642,7 +651,7 @@
 		}
 		else {
 			predicate = [NSPredicate predicateWithFormat: @"TRUEPREDICATE"];
-			DebugLog(D_INFO, @"---Setting predicate to: %@", theSearchBar.text);
+			DebugLog(D_FINER, @"---Setting predicate to: %@", theSearchBar.text);
 		}
 	}
 	[fetchRequest setPredicate:predicate];

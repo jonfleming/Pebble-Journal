@@ -51,7 +51,7 @@
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	if ([fileManager fileExistsAtPath:path]) {
 		NSArray *thisArray = [[NSArray alloc] initWithContentsOfFile:path];
-		DebugLog(D_INFO, @"The array count: %i", [thisArray count]);
+		DebugLog(D_FINER, @"The array count: %i", [thisArray count]);
 		
 		rootViewController.resourceArray = thisArray;
 	}	
@@ -71,7 +71,7 @@
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	NSError *error = nil;
     if (managedObjectContext != nil) {
-		DebugLog(D_INFO, @"--- Saving on Exit");
+		DebugLog(D_FINER, @"--- Saving on Exit");
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
 			DebugLog(D_ERROR, @"*** Unresolved error %@, %@", error, [error userInfo]);
 			DebugBreak();

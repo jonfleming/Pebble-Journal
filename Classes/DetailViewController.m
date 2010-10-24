@@ -41,7 +41,7 @@
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
  */
 - (void)setItem:(Item *)managedObject {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	if (managedObject == nil) {
 		[item release];
 		item = nil;
@@ -93,6 +93,7 @@
     
     if (popoverController != nil) {
         [popoverController dismissPopoverAnimated:YES];
+		[self toolbarEnabled:YES];
     }
 	changingViews = FALSE;
 }
@@ -383,8 +384,9 @@
 #pragma mark Toolbar support
 
 - (void)toolbarEnabled:(BOOL)enabled {
-	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, YESNO(enabled));	
+	DebugLog(D_INFO, @"%s %@", __FUNCTION__, YESNO(enabled));	
 	checklistViewController.toolbar.userInteractionEnabled = enabled;
+	notelistViewController.toolbar.userInteractionEnabled = enabled;
 }
 
 - (void) updatePopoverButton {

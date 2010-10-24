@@ -32,6 +32,7 @@
 
 - (void)positionDateLabel;
 - (IBAction)showNotelist:(id)sender;
+- (IBAction)timestamp:(id)sender;
 - (CGFloat)lineHeight;
 - (IBAction)insertNewObject:(id)sender;
 - (void)addGestureRecognizer:(UIView *)view;

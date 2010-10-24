@@ -172,7 +172,7 @@
 }
 
 - (void)panHandler:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 
 	switch (recognizer.state) {
 		case UIGestureRecognizerStateBegan:
@@ -205,7 +205,7 @@
 }
 
 - (void)dropListItem:(UITableViewCell *)cell at:(CGPoint) location {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 	DebugLog(D_VERBOSE, @"--- location: %f, %f", location.x, location.y);
 	NSIndexPath *sourceIndexPath = [self.tableView indexPathForCell:cell];
 	ListItem *movingListItem = [fetchedResultsController objectAtIndexPath:sourceIndexPath];
@@ -687,12 +687,12 @@
 
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_FINER, @"%s", __FUNCTION__);
 	DetailViewController *detailViewController = listViewController.detailViewController;
 	BOOL canMove = YES;
 	Item *item = detailViewController.item;
 	if (item.sortField != nil) {
-		DebugLog(D_INFO, @"sortField: %@", item.sortField);
+		DebugLog(D_FINER, @"sortField: %@", item.sortField);
 		canMove = [item.sortField isEqual:@"displayOrder"];
 	}
     return canMove;
@@ -718,7 +718,7 @@
 	DebugLog(D_VERBOSE, @"%s section: %d", __FUNCTION__, section);
 	id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
 	NSString *sectionTitle = [sectionInfo name];
-	DebugLog(D_INFO, @"  Section Title: %@", sectionTitle);
+	DebugLog(D_FINER, @"  Section Title: %@", sectionTitle);
 	
 	return sectionTitle;
 }
