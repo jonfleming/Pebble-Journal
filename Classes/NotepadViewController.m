@@ -13,6 +13,7 @@
 #import "LinesView.h"
 #import "Utility.h"
 #import "constants.h"
+#import "NotelistCell.h"
 
 @implementation NotepadViewController
 
@@ -63,6 +64,7 @@
 }
 
 - (void)addGestureRecognizer:(UIView *)view {
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
 	[view addGestureRecognizer:recognizer];
 	[recognizer release];
@@ -74,9 +76,12 @@
 }
 
 - (IBAction)swipeRight:(UIPanGestureRecognizer *)sender {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
-	NSIndexPath *indexPath = [detailViewController.notelistViewController indexPathForSelectedCell];
-	DebugLog(D_VERBOSE, @"--- indexPath: %@:", indexPath); 
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	NoteTableViewController *tableViewController = (NoteTableViewController *)detailViewController.notelistViewController.tableViewController;
+
+	//NSIndexPath *indexPath = [detailViewController.notelistViewController indexPathForSelectedCell];
+	NSIndexPath *indexPath = [tableViewController selectedPath];
+	DebugLog(D_FINER, @"--- indexPath: %@:", indexPath); 
 	if (indexPath) {
 		if (indexPath.row > 0) {
 			indexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
@@ -87,14 +92,16 @@
 }
 
 - (IBAction)swipeLeft:(UIPanGestureRecognizer *)sender {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	NoteTableViewController *tableViewController = (NoteTableViewController *)detailViewController.notelistViewController.tableViewController;
 
-	NSIndexPath *indexPath = [detailViewController.notelistViewController indexPathForSelectedCell];
-	DebugLog(D_VERBOSE, @"--- indexPath: %@:", indexPath); 
+	//NSIndexPath *indexPath = [detailViewController.notelistViewController indexPathForSelectedCell];
+	NSIndexPath *indexPath = [tableViewController selectedPath];
+	DebugLog(D_FINER, @"--- indexPath: %@:", indexPath); 
 	if (indexPath) {
-		TableViewController *tableViewController = detailViewController.notelistViewController.tableViewController;
 		NSInteger rows = [tableViewController tableView:tableViewController.tableView numberOfRowsInSection:0];
 		indexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
+		DebugLog(D_FINER, @"--- rows: %d  new indexPath: %@:", rows, indexPath); 
 
 		if (indexPath.row < rows) {
 			[self turnPage:UISwipeGestureRecognizerDirectionLeft];
@@ -108,10 +115,12 @@
 	[detailViewController saveNote];
 	TableViewController *tableViewController = detailViewController.notelistViewController.tableViewController;
 	
+	[tableViewController setSelectedCell:(NotelistCell *)[tableViewController tableView:tableViewController.tableView cellForRowAtIndexPath:indexPath]];	
 	[tableViewController selectCell:indexPath];
 }
 
 - (void)turnPage:(UISwipeGestureRecognizerDirection)direction {
+	DebugLog(D_TRACE, @"%s direction:%@", __FUNCTION__,direction == UISwipeGestureRecognizerDirectionLeft ? @"Left":@"Right");
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:1.0];
 	if (direction == UISwipeGestureRecognizerDirectionLeft) {

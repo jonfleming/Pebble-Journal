@@ -46,7 +46,7 @@
 }
 
 - (IBAction) selectDueDate:(id)sender {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	datePicker = [[DatePicker alloc] initWithNibName:@"DatePicker" bundle:nil];
 	datePicker.observer = self;
 	datePicker.selectedDate = self.dueDate;
@@ -99,7 +99,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
     if ([keyPath isEqual:@"selectedDate"]) {
 		self.dueDate = datePicker.selectedDate;  // causes EXC_BAD_ACESS
 		[self.dueDateButton setTitle:[Utility formatDate:self.dueDate] forState:UIControlStateNormal];

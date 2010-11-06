@@ -18,6 +18,7 @@ void _DebugLog(int level, NSString *format,...) {
     va_end (ap);
 	
 	if (level <= D_LEVEL) {
+		for (int i=0; i<level; i++) {fprintf(stderr, "\t");}
 		fprintf(stderr,"%s",[body UTF8String]);
 	}
     [body release];

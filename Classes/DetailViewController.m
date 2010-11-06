@@ -41,7 +41,7 @@
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
  */
 - (void)setItem:(Item *)managedObject {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	if (managedObject == nil) {
 		[item release];
 		item = nil;
@@ -622,9 +622,9 @@
 } 
 
 - (void) returnMainViewToInitialposition:(NSNotification*)aNotification{ 
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	if (tabBarController.selectedIndex == NOTELIST) {
-		DebugLog(D_VERBOSE, @"--- skipping NOTELIST");
+		DebugLog(D_FINER, @"--- skipping NOTELIST");
 		return;
 	}
 	TabViewBaseController *UIView = (TabViewBaseController *)tabBarController.selectedViewController;
@@ -644,7 +644,7 @@
 }
 
 - (void)scrollViewForKeyboard:(TabViewBaseController *)viewController notification:(NSNotification*)aNotification up:(BOOL)up { 
-	DebugLog(D_VERBOSE, @"%s%@  editing:%@  changingFocus:%@", __FUNCTION__, YESNO(up), YESNO(checklistViewController.editing), YESNO(checklistViewController.tableViewController.changingFocus));
+	DebugLog(D_FINER, @"%s%@  editing:%@  changingFocus:%@", __FUNCTION__, YESNO(up), YESNO(checklistViewController.editing), YESNO(checklistViewController.tableViewController.changingFocus));
 	[self reportFrames];
 	
 	UIView *currentView = viewController.keyboardView;

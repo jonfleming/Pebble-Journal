@@ -21,19 +21,21 @@
 
 @implementation NoteTableViewController
 
-@synthesize noteItem;
+@synthesize noteItem, selectedRow;
 
 #pragma mark -
 #pragma mark Note Support
 - (void)setSelectedCell:(NotelistCell *)cell {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, cell);
 	[selectedCell release];
 	selectedCell = [cell retain];
 }
 
 - (void)selectCell:(NSIndexPath *)indexPath {
 	DebugLog(D_TRACE, @"%s path: %@", __FUNCTION__, indexPath);
-
+	selectedRow = indexPath.row;
+	// Note: can't call setSelectedCell from here because cellForRowAtIndexPath calls configureCell and causes an endless loop
+	
     // Set noteItem to current cell and intialize NotepadView	
 	NSUInteger row = indexPath.row;
 	NSInteger rows = [self tableView:self.tableView numberOfRowsInSection:0];
@@ -41,8 +43,9 @@
 		DebugLog(D_TRACE, @"!!! Error: attempt to select non-existant row: %d", indexPath.row);
 		return;
 	}
+	
 	noteItem = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	DebugLog(D_VERBOSE, @"item: %@", listViewController.detailViewController.item.itemTitle);
+	DebugLog(D_FINER, @"item: %@", listViewController.detailViewController.item.itemTitle);
 	
 	listViewController.detailViewController.item.lastNoteItemRow = [NSNumber numberWithInt:row];
 	[self updateNotepadView];
@@ -88,6 +91,8 @@
 }
 
 - (void)editNote:(NSIndexPath *)indexPath {
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	// there are times when we want to select a cell without changing self.selectedCell
 	[self setSelectedCell:(NotelistCell *)[self tableView:self.tableView cellForRowAtIndexPath:indexPath]];
 	[self selectCell:indexPath];
 	
@@ -95,8 +100,10 @@
 	[listViewController.detailViewController showView:NOTEPAD];
 }
 
-- (NSIndexPath *)selectedRow {
-	return 	[self.tableView indexPathForSelectedRow];
+- (NSIndexPath *)selectedPath {
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	//return 	[self.tableView indexPathForSelectedRow];
+	return [NSIndexPath indexPathForRow:selectedRow inSection:0];
 }
 
 - (void)report {
@@ -166,30 +173,30 @@
 	
 	NotelistCell *cell = (NotelistCell *)selectedCell;
 	if (cell == nil) {
-		DebugLog(D_FINER, @"   selectedCell is nil. Exiting updateObject.");
+		DebugLog(D_VERBOSE, @"   selectedCell is nil. Exiting updateObject.");
 		return;
 	}
 
 	DetailViewController *detailViewController = listViewController.detailViewController;
 	if (detailViewController == nil) {
-		DebugLog(D_FINER, @"   detailViewController is nil. Exiting updateObject.");
+		DebugLog(D_VERBOSE, @"   detailViewController is nil. Exiting updateObject.");
 		return;
 	}
 	
 	NotepadViewController *notepadViewController = detailViewController.notepadViewController;
 	if (notepadViewController == nil) {
-		DebugLog(D_FINER, @"   notepadViewController is nil. Exiting updateObject.");
+		DebugLog(D_VERBOSE, @"   notepadViewController is nil. Exiting updateObject.");
 		return;
 	}
 	
 	if (notepadViewController.notepadView == nil) {
-		DebugLog(D_FINER, @"   notepadView is nil. Exiting updateObject.");
+		DebugLog(D_VERBOSE, @"   notepadView is nil. Exiting updateObject.");
 		return;
 	}
 	
 	noteItem.modifiedDate =[NSDate date];
 	noteItem.note = notepadViewController.notepadView.text;
-	DebugLog(D_FINER, @"noteItem: %@ \ncell: %@", noteItem, cell.title.text);
+	DebugLog(D_VERBOSE, @"noteItem: %@ \ncell: %@", noteItem, cell.title.text);
 	NSArray *array = [[noteItem.note substringToIndex:MIN(200,[noteItem.note length])] componentsSeparatedByString:@"\n"];
 	NSString *title = [array objectAtIndex:0];
 	noteItem.title = title;
@@ -204,7 +211,7 @@
 		cell.summary.text = summary;
 	}
 	
-	DebugLog(D_FINER, @"=== %@    %@", noteItem.title, noteItem.summary);
+	DebugLog(D_VERBOSE, @"=== %@    %@", noteItem.title, noteItem.summary);
 }
 
 // Customize the appearance of table view cells.
@@ -237,14 +244,14 @@
 }
 
 - (void)configureCell:(NotelistCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, indexPath);
     
     NoteItem *row = [fetchedResultsController objectAtIndexPath:indexPath];
 	if (row == nil) {
 		DebugLog(D_ERROR, @"=== Error: row is nil");
 		DebugBreak();
 	}
-	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, row.title);
+	DebugLog(D_TRACE, @"--- row: %d  title: %@", indexPath.row, row.title);
 
     cell.textLabel.text = [Utility formatDate:([listViewController.detailViewController.item.sortField isEqualToString:@"modifiedDate"] ?
 		row.modifiedDate : row.creationDate)];
@@ -275,7 +282,7 @@
 }
 
 - (void)panHandler:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 
 	switch (recognizer.state) {
 		case UIGestureRecognizerStateBegan:
@@ -308,7 +315,7 @@
 }
 
 - (void)dropListItem:(UITableViewCell *)cell at:(CGPoint) location {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	DebugLog(D_VERBOSE, @"--- location: %f, %f", location.x, location.y);
 	NSIndexPath *sourceIndexPath = [self.tableView indexPathForCell:cell];
 	NoteItem *movingListItem = [fetchedResultsController objectAtIndexPath:sourceIndexPath];

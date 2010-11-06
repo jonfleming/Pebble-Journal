@@ -40,7 +40,7 @@
 }
 
 - (void)presentPopover:(id)sender {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	UIView *inView = (UIView *)sender;
 	CGRect rect = CGRectMake(0, 0, 22, 22);
 	
@@ -58,7 +58,7 @@
 }
 
 - (void)dismissPopover {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	if (popoverController.popoverVisible) {
 		[popoverController dismissPopoverAnimated:YES];
 	}
@@ -95,7 +95,7 @@
 
 #pragma mark UITableViewDelegate methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	target.text = [choices objectAtIndex:indexPath.row];
 	[popoverController dismissPopoverAnimated:YES];
 }	

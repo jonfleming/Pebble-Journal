@@ -14,9 +14,11 @@
 
 @interface NoteTableViewController : TableViewController {
 	NoteItem *noteItem;
+	int selectedRow;
 }
 
 @property (nonatomic, retain) NoteItem *noteItem;
+@property (assign) int selectedRow;
 
 
 //- (NSFetchedResultsController *)fetchedResultsControllerInit;  // implemented in base class
@@ -34,6 +36,6 @@
 - (void)editNote:(NSIndexPath *)indexPath;
 - (void)insertNewObject:(id)sender;
 - (void)updateObject;
-- (NSIndexPath *)selectedRow;
+- (NSIndexPath *)selectedPath;
 - (void)report;
 @end

@@ -30,18 +30,18 @@
 	return self;
 }
 - (void)setFocus {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	[textField becomeFirstResponder];
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	//[self.textField resignFirstResponder];
 	[self dismissWithClickedButtonIndex:1 animated:TRUE];
 	return FALSE;
 }
 - (void)show
 {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	[super show];
 }
 - (NSString *)enteredText
@@ -50,7 +50,7 @@
 }
 - (void)dealloc
 {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	[textField release];
 	[super dealloc];
 }

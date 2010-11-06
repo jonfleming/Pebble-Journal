@@ -32,11 +32,20 @@
  */
 
 - (NSIndexPath *)indexPathForSelectedCell {
+	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, tableViewController.selectedCell);
+	
 	UITableViewCell *cell = tableViewController.selectedCell;
 	NSIndexPath *indexPath = nil;
 	
-	if (cell) {
+	if (cell != nil) {
 		indexPath = [tableViewController.tableView indexPathForCell:cell];
+	}
+	else {
+		DebugLog(D_ERROR, @"=== cell is nil");
+	}
+
+	if (indexPath == nil) {
+		DebugLog(D_ERROR, @"=== indexpath is nil");
 	}
 	
 	return indexPath;
@@ -102,7 +111,7 @@
 #pragma mark -
 #pragma mark Toolbar button handlers
 - (IBAction)showProtect:(id)sender {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	if ([self functionDisabled]) {
 		return;
 	}
@@ -126,7 +135,7 @@
 }
 
 - (IBAction)showOptions:(id)sender {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	if ([self functionDisabled]) {
 		return;
 	}
@@ -163,7 +172,7 @@
 }
 
 - (void)initOptions:(Options *)options {
-	DebugLog(D_FINER, @"%s sortField: %@", __FUNCTION__,detailViewController.item.sortField);
+	DebugLog(D_TRACE, @"%s sortField: %@", __FUNCTION__,detailViewController.item.sortField);
 	
 	BOOL ascending = FALSE;
 	int sort = 0;
@@ -180,11 +189,11 @@
 	[options.sortOptions initwithSort:sort ascending:ascending];
 	
 	NSString *field = [sortFields objectAtIndex:options.sortOptions.sort];
-	DebugLog(D_INFO,@"=== options.sort: %d  ascending: %@  field: %@", options.sortOptions.sort, YESNO(options.sortOptions.ascending), field);
+	DebugLog(D_TRACE,@"=== options.sort: %d  ascending: %@  field: %@", options.sortOptions.sort, YESNO(options.sortOptions.ascending), field);
 }
 
 - (void)popoverControllerDidDismissPopover: (UIPopoverController *)popoverController {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	
 	[self.detailViewController toolbarEnabled:YES];
 	

@@ -51,7 +51,7 @@
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	if ([fileManager fileExistsAtPath:path]) {
 		NSArray *thisArray = [[NSArray alloc] initWithContentsOfFile:path];
-		DebugLog(D_FINER, @"The array count: %i", [thisArray count]);
+		DebugLog(D_FINER, @"--- The array count: %i", [thisArray count]);
 		
 		rootViewController.resourceArray = thisArray;
 	}	
@@ -154,7 +154,7 @@
 	}
 		
 	NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Pebble.sqlite"];
-	DebugLog(D_TRACE, @"storePath: %@", storePath);
+	DebugLog(D_FINER, @"--- storePath: %@", storePath);
 	
 	/*
 	 Provide a pre-populated default store.
@@ -164,7 +164,7 @@
 	if (![fileManager fileExistsAtPath:storePath]) {
 		NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:@"Pebble" ofType:@"sqlite"];
 		if (defaultStorePath) {
-			DebugLog(D_TRACE, @"Copying default database: %@", defaultStorePath);
+			DebugLog(D_FINER, @"--- Copying default database: %@", defaultStorePath);
 			[fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
 		}
 	}

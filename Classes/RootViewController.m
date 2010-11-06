@@ -76,12 +76,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
-    [super viewWillAppear:animated];
-	
-	if (detailViewController.popoverController != nil) {
-		[detailViewController toolbarEnabled:NO];
-	}
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+    [super viewWillAppear:animated];	
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -91,6 +87,10 @@
 		NSIndexPath *indexPath = [fetchedResultsController indexPathForObject:detailViewController.item];
 		[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 	}
+	
+	if (detailViewController.popoverController.popoverVisible) {
+		[detailViewController toolbarEnabled:NO];
+	}	
 }
 
 - (void)selectItem:(Item *)item {
@@ -113,7 +113,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
     [super viewWillDisappear:animated];
 
 	if (detailViewController.popoverController != nil) {
@@ -147,14 +147,14 @@
 }
 
 - (void)updateBadgeCount:(NSIndexPath *)indexPath {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	// cellForRowAtIndexPath calls configureCell which calls setBadge
 	TDBadgedCell *cell = (TDBadgedCell *)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
 	[cell setNeedsLayout];
 }
 
 - (void)updateCurrentBadgeCount {
-	DebugLog(D_FINER, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	TDBadgedCell *cell = (TDBadgedCell *)[detailViewController currentCell];
 	[self setBadge:cell item:detailViewController.item];
 	[cell setNeedsLayout];
@@ -378,11 +378,16 @@
 	}
 }
 
+// TODO: rename protect to globalProtect
+// TODO: create globalUnlocked
+// if globalUnlocked then skip item protect
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	DebugLog(D_FINER, @"%s %@", __FUNCTION__, alertView.title);
+	DebugLog(D_INFO, @"%s %@", __FUNCTION__, alertView.title);
 	int prompt = [[RootViewController passwordPrompts] indexOfObject:alertView.title];
-				   
+	[[(AlertPrompt *)alertView textField] resignFirstResponder]; 
+	DebugLog(D_INFO, @"--- returned from resignFirstResponder");
+	
 	switch (prompt) {
 		case PasswordIncorrect:
 			if (buttonIndex != [alertView cancelButtonIndex]) {
@@ -395,7 +400,8 @@
 			}			
 			break;
 		case PasswordPebble:
-			//[[(AlertPrompt *)alertView textField] resignFirstResponder]; 
+			DebugLog(D_INFO, @"--- handle PasswordPebble");
+
 			if (buttonIndex != [alertView cancelButtonIndex])
 			{
 				NSString *enteredText = [(AlertPrompt *)alertView enteredText];
@@ -403,28 +409,36 @@
 				NSString *password = [defaults stringForKey:@"password"];
 				
 				if ([enteredText isEqualToString:password]) {
+					DebugLog(D_INFO, @"--- password is correct");
+				
 					if (!protect && detailViewController != nil) {
+						DebugLog(D_INFO, @"--- set detailViewController.item");
 						detailViewController.item = [[self fetchedResultsController] objectAtIndexPath:self.lastItemPath];
+						DebugLog(D_INFO, @"--- return from setItem");
 					}
 					else {
+						DebugLog(D_INFO, @"--- still protected");
 						protect = FALSE;
 						fetchedResultsController = nil;						
 					}
 					
 					if (postPasswordAction != nil) {
+						DebugLog(D_INFO, @"--- performSelector postPasswordAction");
 						[self performSelector:self.postPasswordAction];
 						self.postPasswordAction = nil;
 					}
 				}
 				else {
-					protect = TRUE;
+					DebugLog(D_INFO, @"--- Incorrect Password");
+					//protect = TRUE;
 					UIAlertView	*alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect Password" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry", nil];
 					[alertView show];
 					[alertView release];
 				}
 			}
 			else {
-				protect = TRUE;
+				DebugLog(D_INFO, @"--- Cancelled");
+				//protect = TRUE;
 				[self.tableView deselectRowAtIndexPath:self.lastItemPath animated:YES];
 				detailViewController.item = nil;
 			}				
@@ -527,7 +541,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	
 	// Save pending changes
    	//[detailViewController saveNote];
