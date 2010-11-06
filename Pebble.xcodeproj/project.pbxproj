@@ -22,7 +22,6 @@
 		C76F9C161243BCB8008AA558 /* Options.m in Sources */ = {isa = PBXBuildFile; fileRef = C76F9C151243BCB8008AA558 /* Options.m */; };
 		C779E7161273CC1C00A309A0 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E6EB1273CC1B00A309A0 /* Default-Landscape.png */; };
 		C779E7181273CC1C00A309A0 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E6ED1273CC1B00A309A0 /* Default-Portrait.png */; };
-		C779E71A1273CC1C00A309A0 /* EditListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C779E6EF1273CC1B00A309A0 /* EditListItem.xib */; };
 		C779E71B1273CC1C00A309A0 /* Gear-32.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E6F01273CC1B00A309A0 /* Gear-32.png */; };
 		C779E71C1273CC1C00A309A0 /* green_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E6F11273CC1B00A309A0 /* green_background.png */; };
 		C779E71D1273CC1C00A309A0 /* icon_bak.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E6F21273CC1B00A309A0 /* icon_bak.png */; };
@@ -44,7 +43,6 @@
 		C779E72D1273CC1C00A309A0 /* notepad_image_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7021273CC1B00A309A0 /* notepad_image_small.png */; };
 		C779E72E1273CC1C00A309A0 /* Notepad_seg.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7031273CC1B00A309A0 /* Notepad_seg.png */; };
 		C779E72F1273CC1C00A309A0 /* orange_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7041273CC1B00A309A0 /* orange_background.png */; };
-		C779E7301273CC1C00A309A0 /* Pebble.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C779E7051273CC1C00A309A0 /* Pebble.xcdatamodeld */; };
 		C779E7311273CC1C00A309A0 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E70F1273CC1C00A309A0 /* preferences.png */; };
 		C779E7321273CC1C00A309A0 /* priority_colors.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7101273CC1C00A309A0 /* priority_colors.png */; };
 		C779E7331273CC1C00A309A0 /* red_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7111273CC1C00A309A0 /* red_background.png */; };
@@ -118,7 +116,6 @@
 		C76F9C151243BCB8008AA558 /* Options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Options.m; sourceTree = "<group>"; };
 		C779E6EB1273CC1B00A309A0 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		C779E6ED1273CC1B00A309A0 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
-		C779E6EF1273CC1B00A309A0 /* EditListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditListItem.xib; sourceTree = "<group>"; };
 		C779E6F01273CC1B00A309A0 /* Gear-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gear-32.png"; sourceTree = "<group>"; };
 		C779E6F11273CC1B00A309A0 /* green_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_background.png; sourceTree = "<group>"; };
 		C779E6F21273CC1B00A309A0 /* icon_bak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bak.png; sourceTree = "<group>"; };
@@ -140,15 +137,6 @@
 		C779E7021273CC1B00A309A0 /* notepad_image_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notepad_image_small.png; sourceTree = "<group>"; };
 		C779E7031273CC1B00A309A0 /* Notepad_seg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notepad_seg.png; sourceTree = "<group>"; };
 		C779E7041273CC1B00A309A0 /* orange_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_background.png; sourceTree = "<group>"; };
-		C779E7061273CC1C00A309A0 /* Pebble 2.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 2.xcdatamodel"; sourceTree = "<group>"; };
-		C779E7071273CC1C00A309A0 /* Pebble 3.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 3.xcdatamodel"; sourceTree = "<group>"; };
-		C779E7081273CC1C00A309A0 /* Pebble 4.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 4.xcdatamodel"; sourceTree = "<group>"; };
-		C779E7091273CC1C00A309A0 /* Pebble 5.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 5.xcdatamodel"; sourceTree = "<group>"; };
-		C779E70A1273CC1C00A309A0 /* Pebble 6.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 6.xcdatamodel"; sourceTree = "<group>"; };
-		C779E70B1273CC1C00A309A0 /* Pebble 7.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 7.xcdatamodel"; sourceTree = "<group>"; };
-		C779E70C1273CC1C00A309A0 /* Pebble 8.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 8.xcdatamodel"; sourceTree = "<group>"; };
-		C779E70D1273CC1C00A309A0 /* Pebble 9.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 9.xcdatamodel"; sourceTree = "<group>"; };
-		C779E70E1273CC1C00A309A0 /* Pebble.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Pebble.xcdatamodel; sourceTree = "<group>"; };
 		C779E70F1273CC1C00A309A0 /* preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preferences.png; sourceTree = "<group>"; };
 		C779E7101273CC1C00A309A0 /* priority_colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = priority_colors.png; sourceTree = "<group>"; };
 		C779E7111273CC1C00A309A0 /* red_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_background.png; sourceTree = "<group>"; };
@@ -357,7 +345,6 @@
 				C779E7391273CEB900A309A0 /* clock.png */,
 				C779E6EB1273CC1B00A309A0 /* Default-Landscape.png */,
 				C779E6ED1273CC1B00A309A0 /* Default-Portrait.png */,
-				C779E6EF1273CC1B00A309A0 /* EditListItem.xib */,
 				C779E6F01273CC1B00A309A0 /* Gear-32.png */,
 				C779E6F11273CC1B00A309A0 /* green_background.png */,
 				C779E6F21273CC1B00A309A0 /* icon_bak.png */,
@@ -379,7 +366,6 @@
 				C779E7021273CC1B00A309A0 /* notepad_image_small.png */,
 				C779E7031273CC1B00A309A0 /* Notepad_seg.png */,
 				C779E7041273CC1B00A309A0 /* orange_background.png */,
-				C779E7051273CC1C00A309A0 /* Pebble.xcdatamodeld */,
 				C779E70F1273CC1C00A309A0 /* preferences.png */,
 				C779E7101273CC1C00A309A0 /* priority_colors.png */,
 				C779E7111273CC1C00A309A0 /* red_background.png */,
@@ -517,7 +503,6 @@
 				C7831A5B12592E8200D3A0C3 /* ProtectView.xib in Resources */,
 				C779E7161273CC1C00A309A0 /* Default-Landscape.png in Resources */,
 				C779E7181273CC1C00A309A0 /* Default-Portrait.png in Resources */,
-				C779E71A1273CC1C00A309A0 /* EditListItem.xib in Resources */,
 				C779E71B1273CC1C00A309A0 /* Gear-32.png in Resources */,
 				C779E71C1273CC1C00A309A0 /* green_background.png in Resources */,
 				C779E71D1273CC1C00A309A0 /* icon_bak.png in Resources */,
@@ -588,7 +573,6 @@
 				C77E9BFE1246B09A00FF22C4 /* ListItem.m in Sources */,
 				C77E5FB8125046630066F300 /* SortOptions.m in Sources */,
 				C7831A6B125930E400D3A0C3 /* ProtectViewController.m in Sources */,
-				C779E7301273CC1C00A309A0 /* Pebble.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,24 +701,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C779E7051273CC1C00A309A0 /* Pebble.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C779E7061273CC1C00A309A0 /* Pebble 2.xcdatamodel */,
-				C779E7071273CC1C00A309A0 /* Pebble 3.xcdatamodel */,
-				C779E7081273CC1C00A309A0 /* Pebble 4.xcdatamodel */,
-				C779E7091273CC1C00A309A0 /* Pebble 5.xcdatamodel */,
-				C779E70A1273CC1C00A309A0 /* Pebble 6.xcdatamodel */,
-				C779E70B1273CC1C00A309A0 /* Pebble 7.xcdatamodel */,
-				C779E70C1273CC1C00A309A0 /* Pebble 8.xcdatamodel */,
-				C779E70D1273CC1C00A309A0 /* Pebble 9.xcdatamodel */,
-				C779E70E1273CC1C00A309A0 /* Pebble.xcdatamodel */,
-			);
-			currentVersion = C779E70D1273CC1C00A309A0 /* Pebble 9.xcdatamodel */;
-			path = Pebble.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		C77DF5B011D934A4000175AF /* Pebble.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

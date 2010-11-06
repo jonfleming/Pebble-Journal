@@ -30,8 +30,8 @@
 	};
 	28042008108E984D000629CD /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1160, 10244}}";
-			sepNavSelRange = "{46, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {733, 10374}}";
+			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 389}";
 			sepNavWindowFrame = "{{15, 86}, {1394, 787}}";
 		};
@@ -62,7 +62,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = C78B43FA11D2B2B40005358D /* Pebble */;
-		activeSDKPreference = iphonesimulator3.2;
+		activeSDKPreference = iphoneos3.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Pebble */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* Pebble */,
@@ -177,7 +177,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					364,
+					10,
 					20,
 					48,
 					43,
@@ -251,7 +251,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					10,
+					483,
 					60,
 					20,
 					48,
@@ -268,17 +268,15 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 309586344;
-			PBXWorkspaceStateSaveDate = 309586344;
+			PBXPerProjectTemplateStateSaveDate = 310756946;
+			PBXWorkspaceStateSaveDate = 310756946;
 		};
 		perUserProjectItems = {
-			C779E6DC12725AC100A309A0 = C779E6DC12725AC100A309A0 /* PBXTextBookmark */;
-			C779E6DD12725AD100A309A0 = C779E6DD12725AD100A309A0 /* PBXTextBookmark */;
-			C779E6E612725B1800A309A0 = C779E6E612725B1800A309A0 /* PBXTextBookmark */;
-			C782F59712616A28004A8FBB = C782F59712616A28004A8FBB /* PBXTextBookmark */;
-			C782F59812616A28004A8FBB = C782F59812616A28004A8FBB /* PBXTextBookmark */;
-			C782F59E12617DE9004A8FBB = C782F59E12617DE9004A8FBB /* PBXTextBookmark */;
-			C78A2F25126B97FD00573C2C = C78A2F25126B97FD00573C2C /* PBXTextBookmark */;
+			C785DD5F1274C756009E55A7 = C785DD5F1274C756009E55A7 /* PBXTextBookmark */;
+			C788934B127C17E100D56163 = C788934B127C17E100D56163 /* PlistBookmark */;
+			C788934D127C879C00D56163 = C788934D127C879C00D56163 /* PlistBookmark */;
+			C78C54E51285C66100792364 /* PlistBookmark */ = C78C54E51285C66100792364 /* PlistBookmark */;
+			C78C54E61285C66100792364 /* PlistBookmark */ = C78C54E61285C66100792364 /* PlistBookmark */;
 		};
 		sourceControlManager = C78B43FE11D2B2D30005358D /* Source Control */;
 		userBookmarkGroup = C7854AE411DBA00C00A303C1 /* PBXBookmarkGroup */;
@@ -622,36 +620,6 @@
 			sepNavVisRange = "{764, 1365}";
 			sepNavWindowFrame = "{{38, 65}, {1394, 787}}";
 		};
-	};
-	C779E6DC12725AC100A309A0 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28042008108E984D000629CD /* RootViewController.m */;
-		name = "RootViewController.m: 3";
-		rLen = 0;
-		rLoc = 46;
-		rType = 0;
-		vrLen = 2220;
-		vrLoc = 0;
-	};
-	C779E6DD12725AD100A309A0 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28042008108E984D000629CD /* RootViewController.m */;
-		name = "RootViewController.m: 3";
-		rLen = 0;
-		rLoc = 46;
-		rType = 0;
-		vrLen = 2192;
-		vrLoc = 0;
-	};
-	C779E6E612725B1800A309A0 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28042008108E984D000629CD /* RootViewController.m */;
-		name = "RootViewController.m: 3";
-		rLen = 0;
-		rLoc = 46;
-		rType = 0;
-		vrLen = 389;
-		vrLoc = 0;
 	};
 	C77B13A61232EFEF005385A4 /* Pebble 7.xcdatamodel */ = {
 		uiCtxt = {
@@ -1566,36 +1534,6 @@
 			sepNavVisRange = "{0, 72}";
 		};
 	};
-	C782F59712616A28004A8FBB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 2804200A108E984D000629CD /* DetailViewController.m */;
-		name = "DetailViewController.m: 250";
-		rLen = 0;
-		rLoc = 7307;
-		rType = 0;
-		vrLen = 2151;
-		vrLoc = 7157;
-	};
-	C782F59812616A28004A8FBB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28042008108E984D000629CD /* RootViewController.m */;
-		name = "RootViewController.m: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1764;
-		vrLoc = 0;
-	};
-	C782F59E12617DE9004A8FBB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28042008108E984D000629CD /* RootViewController.m */;
-		name = "RootViewController.m: 3";
-		rLen = 0;
-		rLoc = 46;
-		rType = 0;
-		vrLen = 1772;
-		vrLoc = 0;
-	};
 	C7831A69125930E400D3A0C3 /* ProtectViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1121, 761}}";
@@ -1706,15 +1644,37 @@
 			sepNavWindowFrame = "{{38, 304}, {1023, 574}}";
 		};
 	};
-	C78A2F25126B97FD00573C2C /* PBXTextBookmark */ = {
+	C785DD5F1274C756009E55A7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 28042008108E984D000629CD /* RootViewController.m */;
-		name = "RootViewController.m: 3";
+		name = "RootViewController.m: 1";
 		rLen = 0;
-		rLoc = 46;
+		rLoc = 0;
 		rType = 0;
-		vrLen = 1772;
+		vrLen = 389;
 		vrLoc = 0;
+	};
+	C788934B127C17E100D56163 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Pebble-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/techion/Documents/Pebble-Journal/Pebble-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	C788934D127C879C00D56163 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Pebble-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/techion/Documents/Pebble-Journal/Pebble-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
 	};
 	C78B43FA11D2B2B40005358D /* Pebble */ = {
 		isa = PBXExecutable;
@@ -1766,6 +1726,28 @@
 	C78B43FF11D2B2D30005358D /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	C78C54E51285C66100792364 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Pebble-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/techion/Documents/Pebble-Journal/Pebble-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C78C54E61285C66100792364 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Pebble-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/techion/Documents/Pebble-Journal/Pebble-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
 	C7BA802D1200BDB400B65AFA /* NoteTableViewController.h */ = {
 		uiCtxt = {
