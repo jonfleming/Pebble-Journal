@@ -18,11 +18,10 @@
 #import "AlertPrompt.h"
 
 #import "TDBadgedCell.h"
-/*
- This template does not ensure user interface consistency during editing operations in the table view. 
- You must implement appropriate methods to provide the user experience you require.
+/* TODO:
+	if searching/filtered, do not save/update lastItemPath, configureCell, 
+ 
  */
-
 @implementation RootViewController
 
 @synthesize detailViewController, fetchedResultsController, managedObjectContext, lastItemPath, lastTag, itemViewController, theSearchBar;
@@ -176,6 +175,22 @@
 	DebugLog(D_VERBOSE, @"--- badge count:%d", count);
 }
 
+- (BOOL)isSearchResult {
+	return ([theSearchBar.text length] > 0);
+}
+
+/* test cases
+	1. lastItemPath stored in NSUserDefault no longer exits
+	2. rootView table is showing search results
+	
+ */
+
+/* expected behavior
+	clearing search should reset selectedRow to currently selected item.
+ 
+	What happens when saveNote is called when noteItem/item is not current in rootView table?
+	What happens when an item is selected from search results?
+ */
 - (void)configureCell:(TDBadgedCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	DebugLog(D_VERBOSE, @"%s path:%@", __FUNCTION__, indexPath);
     
@@ -186,14 +201,14 @@
 	cell.imageView.backgroundColor = [UIColor lightGrayColor];
 
 	[self setCellImage:cell index:[theItem.itemType intValue]];
-
 	[self setBadge:cell item:theItem];
 
 	// skip configureView if processing search
-	if ([theSearchBar.text length] > 0) {
+	if ([self isSearchResult]) {
 		return;
 	}
 	
+	// when reloading data, configure the view to the last (current) item selected
 	if (indexPath.row == lastItemPath.row && indexPath.section == lastItemPath.section)
 	{
 		DebugLog(D_FINER, @"--- lastItemPath: %@", lastItemPath);
@@ -213,7 +228,6 @@
 
 #pragma mark -
 #pragma mark Add a new object
-
 - (void)insertNewObject:(id)sender {
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	if (protect) {
@@ -241,17 +255,20 @@
     
 	[self saveObjectContext:context];
     
-    NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
+    /* doesn't look right.  no retain?
+	NSIndexPath *insertionPath = [fetchedResultsController indexPathForObject:newManagedObject];
 	if (lastItemPath != nil) {
 		[lastItemPath release];
 	}
 	lastItemPath = insertionPath;
+	*/
 	
+	lastItemPath = [fetchedResultsController indexPathForObject:newManagedObject];
 	[self.tableView reloadData];
     //[self.tableView selectRowAtIndexPath:insertionPath animated:YES scrollPosition:UITableViewScrollPositionTop];
     detailViewController.item = newManagedObject;
 	
-	[self tableView:self.tableView accessoryButtonTappedForRowWithIndexPath:insertionPath];
+	[self tableView:self.tableView accessoryButtonTappedForRowWithIndexPath:lastItemPath];
 }
 
 
@@ -383,10 +400,10 @@
 // if globalUnlocked then skip item protect
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	DebugLog(D_INFO, @"%s %@", __FUNCTION__, alertView.title);
+	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, alertView.title);
 	int prompt = [[RootViewController passwordPrompts] indexOfObject:alertView.title];
 	[[(AlertPrompt *)alertView textField] resignFirstResponder]; 
-	DebugLog(D_INFO, @"--- returned from resignFirstResponder");
+	DebugLog(D_VERBOSE, @"--- returned from resignFirstResponder");
 	
 	switch (prompt) {
 		case PasswordIncorrect:
@@ -400,7 +417,7 @@
 			}			
 			break;
 		case PasswordPebble:
-			DebugLog(D_INFO, @"--- handle PasswordPebble");
+			DebugLog(D_FINER, @"--- handle PasswordPebble");
 
 			if (buttonIndex != [alertView cancelButtonIndex])
 			{
@@ -409,27 +426,27 @@
 				NSString *password = [defaults stringForKey:@"password"];
 				
 				if ([enteredText isEqualToString:password]) {
-					DebugLog(D_INFO, @"--- password is correct");
+					DebugLog(D_FINER, @"--- password is correct");
 				
 					if (!protect && detailViewController != nil) {
-						DebugLog(D_INFO, @"--- set detailViewController.item");
+						DebugLog(D_FINER, @"--- set detailViewController.item");
 						detailViewController.item = [[self fetchedResultsController] objectAtIndexPath:self.lastItemPath];
-						DebugLog(D_INFO, @"--- return from setItem");
+						DebugLog(D_FINER, @"--- return from setItem");
 					}
 					else {
-						DebugLog(D_INFO, @"--- still protected");
+						DebugLog(D_FINER, @"--- still protected");
 						protect = FALSE;
 						fetchedResultsController = nil;						
 					}
 					
 					if (postPasswordAction != nil) {
-						DebugLog(D_INFO, @"--- performSelector postPasswordAction");
+						DebugLog(D_FINER, @"--- performSelector postPasswordAction");
 						[self performSelector:self.postPasswordAction];
 						self.postPasswordAction = nil;
 					}
 				}
 				else {
-					DebugLog(D_INFO, @"--- Incorrect Password");
+					DebugLog(D_FINER, @"--- Incorrect Password");
 					//protect = TRUE;
 					UIAlertView	*alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect Password" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry", nil];
 					[alertView show];
@@ -437,7 +454,7 @@
 				}
 			}
 			else {
-				DebugLog(D_INFO, @"--- Cancelled");
+				DebugLog(D_FINER, @"--- Cancelled");
 				//protect = TRUE;
 				[self.tableView deselectRowAtIndexPath:self.lastItemPath animated:YES];
 				detailViewController.item = nil;
@@ -505,7 +522,7 @@
 #pragma mark -
 #pragma mark Table view delegate
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, indexPath);
 	// Save pending changes
    	[detailViewController saveNote];
 	[detailViewController.checklistViewController.tableViewController updateObject];
@@ -601,8 +618,25 @@
 #pragma mark Fetched results controller, Search bar delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	// if clearing, preserve current selection
+	BOOL clearing = [searchText length] == 0;
 	
-	[self performSearch];
+	Item *currentItem;
+	
+	if (clearing) {
+		lastItemPath = nil;
+		currentItem = detailViewController.item;
+		DebugLog(D_FINER, @"item = %@", currentItem.itemTitle);
+	}
+	
+	[self performSearch];  // calls reloadData
+	
+	if (clearing)
+	{
+		lastItemPath = [fetchedResultsController indexPathForObject:currentItem];
+		DebugLog(D_FINER, @"lastItemPath = %@", lastItemPath);
+		DebugLog(D_FINER, @"item = %@", detailViewController.item.itemTitle);
+	}
 }
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
@@ -646,7 +680,7 @@
 		predicate = [NSPredicate predicateWithFormat: @"FALSEPREDICATE"];
 	}
 	else {
-		if ([theSearchBar.text length] > 0) {
+		if ([self isSearchResult]) {
 			DebugLog(D_FINER, @"---Setting predicate to: %@  scope %d", theSearchBar.text, theSearchBar.selectedScopeButtonIndex);
 			switch (theSearchBar.selectedScopeButtonIndex) {
 				case 0: // Tags

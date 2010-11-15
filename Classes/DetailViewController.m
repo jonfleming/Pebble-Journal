@@ -103,7 +103,7 @@
  showView changes visible view based on segmentedControl/tabBarController index
  */
 - (void)showView:(NSUInteger)index {
-	DebugLog(D_TRACE, @"%s view:%d", __FUNCTION__, index);
+	DebugLog(D_TRACE, @"%s %d", __FUNCTION__, index);
 
 	if (item == nil) {
 		return;
@@ -384,7 +384,7 @@
 #pragma mark Toolbar support
 
 - (void)toolbarEnabled:(BOOL)enabled {
-	DebugLog(D_INFO, @"%s %@", __FUNCTION__, YESNO(enabled));	
+	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, YESNO(enabled));	
 	checklistViewController.toolbar.userInteractionEnabled = enabled;
 	notelistViewController.toolbar.userInteractionEnabled = enabled;
 }
@@ -554,18 +554,18 @@
 }
 
 - (void)reportFrames {
-	DebugLog(D_VERBOSE, @"self.view.frame:   %@", NSStringFromCGRect(self.view.frame));
-	DebugLog(D_VERBOSE, @"view.frame:        %@", NSStringFromCGRect(notepadViewController.view.frame));
-	DebugLog(D_VERBOSE, @"linesView.frame:   %@", NSStringFromCGRect(notepadViewController.linesView.frame));
-	DebugLog(D_VERBOSE, @"notepadView.frame: %@", NSStringFromCGRect(notepadViewController.notepadView.frame));
+	DebugLog(D_FINE, @"self.view.frame:   %@", NSStringFromCGRect(self.view.frame));
+	DebugLog(D_FINE, @"view.frame:        %@", NSStringFromCGRect(notepadViewController.view.frame));
+	DebugLog(D_FINE, @"linesView.frame:   %@", NSStringFromCGRect(notepadViewController.linesView.frame));
+	DebugLog(D_FINE, @"notepadView.frame: %@", NSStringFromCGRect(notepadViewController.notepadView.frame));
 	
-	DebugLog(D_VERBOSE, @"view.bounds:        %@", NSStringFromCGRect(notepadViewController.view.bounds));
-	DebugLog(D_VERBOSE, @"linesView.bounds:   %@", NSStringFromCGRect(notepadViewController.linesView.bounds));
-	DebugLog(D_VERBOSE, @"notepadView.bounds: %@", NSStringFromCGRect(notepadViewController.notepadView.bounds));
+	DebugLog(D_FINE, @"view.bounds:        %@", NSStringFromCGRect(notepadViewController.view.bounds));
+	DebugLog(D_FINE, @"linesView.bounds:   %@", NSStringFromCGRect(notepadViewController.linesView.bounds));
+	DebugLog(D_FINE, @"notepadView.bounds: %@", NSStringFromCGRect(notepadViewController.notepadView.bounds));
 	
-	DebugLog(D_VERBOSE, @"contentVew.frame: %@", NSStringFromCGSize(notepadViewController.notepadView.contentSize));
+	DebugLog(D_FINE, @"contentVew.frame: %@", NSStringFromCGSize(notepadViewController.notepadView.contentSize));
 
-	DebugLog(D_VERBOSE, @"notelist:%@  checklist:%@  editing:%@  inserting:%@  dirty:%@  changingFocus:%@  keyboardUp:%@", 
+	DebugLog(D_INFO, @"notelist:%@  checklist:%@  editing:%@  inserting:%@  dirty:%@  changingFocus:%@  keyboardUp:%@", 
 			 NSStringFromCGRect(notelistViewController.keyboardView.frame),
 			 NSStringFromCGRect(checklistViewController.keyboardView.frame),
 			 YESNO(checklistViewController.editing),
@@ -617,18 +617,18 @@
 		DebugLog(D_VERBOSE, @"--- skipping NOTELIST");
 		return;
 	}
-	TabViewBaseController *UIView = (TabViewBaseController *)tabBarController.selectedViewController;
-	[self scrollViewForKeyboard:UIView notification:aNotification up:YES]; 
+	TabViewBaseController *viewController = (TabViewBaseController *)[tabBarController.viewControllers objectAtIndex:[item.itemType intValue]];
+	[self scrollViewForKeyboard:viewController notification:aNotification up:YES]; 
 } 
 
 - (void) returnMainViewToInitialposition:(NSNotification*)aNotification{ 
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	if (tabBarController.selectedIndex == NOTELIST) {
 		DebugLog(D_FINER, @"--- skipping NOTELIST");
 		return;
 	}
-	TabViewBaseController *UIView = (TabViewBaseController *)tabBarController.selectedViewController;
-	[self scrollViewForKeyboard:UIView notification:aNotification up:NO]; 	
+	TabViewBaseController *viewController = (TabViewBaseController *)[tabBarController.viewControllers objectAtIndex:[item.itemType intValue]];
+	[self scrollViewForKeyboard:viewController notification:aNotification up:NO]; 	
 }
 
 - (void)moveUp:(id)sender {
@@ -644,10 +644,10 @@
 }
 
 - (void)scrollViewForKeyboard:(TabViewBaseController *)viewController notification:(NSNotification*)aNotification up:(BOOL)up { 
-	DebugLog(D_FINER, @"%s%@  editing:%@  changingFocus:%@", __FUNCTION__, YESNO(up), YESNO(checklistViewController.editing), YESNO(checklistViewController.tableViewController.changingFocus));
+	DebugLog(D_TRACE, @"%s%@  editing:%@  changingFocus:%@", __FUNCTION__, YESNO(up), YESNO(checklistViewController.editing), YESNO(checklistViewController.tableViewController.changingFocus));
 	[self reportFrames];
 	
-	UIView *currentView = viewController.keyboardView;
+	UIView *keyboardView = viewController.keyboardView;
 	
 	if (viewController == checklistViewController) {
 		// Don't execute this routine if focus is shifting (becuase keyboard will come back up)
@@ -660,10 +660,10 @@
 		}
 	}
 
-	CGRect newFrame = currentView.frame;
+	CGRect newFrame = keyboardView.frame;
 	CGRect keyboardEndFrame; 
 
-	DebugLog(D_VERBOSE, @"--- scrolling: %@", up?@"UP":@"DOWN");
+	DebugLog(D_FINER, @"--- scrolling: %@", up?@"UP":@"DOWN");
 	[self reportFrames];
 			 
 	checklistViewController.editing = up;
@@ -702,11 +702,11 @@
 	
 	newFrame.size.height += change;
 
-	DebugLog(D_VERBOSE, @"--- Scroll view: %@  frame: %@  change: %f  new frame: %@",
-		  (currentView == checklistViewController.tableViewController.tableView ? @"tableView" : @"notepadView"),
-		  NSStringFromCGRect(currentView.frame), change, NSStringFromCGRect(newFrame));
+	DebugLog(D_INFO, @"--- Scroll view: %@ (%d) frame: %@  change: %f  new frame: %@",
+		  (viewController == checklistViewController ? @"checklist" : @"notelist"), tabBarController.selectedIndex,
+		  NSStringFromCGRect(keyboardView.frame), change, NSStringFromCGRect(newFrame));
 	
-	currentView.frame = newFrame; 
+	keyboardView.frame = newFrame; 
 	
 	[UIView commitAnimations];		
 

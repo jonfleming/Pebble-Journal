@@ -244,14 +244,14 @@
 }
 
 - (void)configureCell:(NotelistCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, indexPath);
+	DebugLog(D_VERBOSE, @"%s %@", __FUNCTION__, indexPath);
     
     NoteItem *row = [fetchedResultsController objectAtIndexPath:indexPath];
 	if (row == nil) {
 		DebugLog(D_ERROR, @"=== Error: row is nil");
 		DebugBreak();
 	}
-	DebugLog(D_TRACE, @"--- row: %d  title: %@", indexPath.row, row.title);
+	DebugLog(D_FINE, @"--- row: %d  title: %@", indexPath.row, row.title);
 
     cell.textLabel.text = [Utility formatDate:([listViewController.detailViewController.item.sortField isEqualToString:@"modifiedDate"] ?
 		row.modifiedDate : row.creationDate)];

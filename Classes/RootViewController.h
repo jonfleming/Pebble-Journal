@@ -62,4 +62,5 @@
 - (void)postShowItemView;
 - (void)showItemView;
 - (BOOL)functionDisabled;
+- (BOOL)isSearchResult;
 @end
