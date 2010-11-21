@@ -612,8 +612,8 @@
 			buildSettings = {
 				"ARCHS[sdk=iphoneos*]" = armv7;
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jon Fleming (LUUCWWGVRN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jon Fleming (LUUCWWGVRN)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -621,8 +621,8 @@
 				OTHER_CFLAGS = "-DDEBUG=1";
 				PREBINDING = NO;
 				PRODUCT_NAME = "Pebble Journal";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "25933D0D-9291-4B34-BE68-26DB110C64E7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25933D0D-9291-4B34-BE68-26DB110C64E7";
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

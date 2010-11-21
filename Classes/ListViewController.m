@@ -67,6 +67,7 @@
 	keyboardView = tableViewController.tableView;
 	
 	//tableViewController.tableView.frame = CGRectMake(-30.0, 0.0, 768.0 + 60.0, 1024.0);
+	tableViewController.tableView.rowHeight = 35.0;
 	[self.listView addSubview:tableViewController.tableView];
 	
 	editButton.style = UIBarButtonItemStyleBordered;

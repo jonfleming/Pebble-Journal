@@ -109,6 +109,10 @@
 		cell.contentMode = UIViewContentModeLeft;
 		cell.shouldIndentWhileEditing = FALSE;
 
+		// fonts
+		cell.textField.font = [UIFont fontWithName:@"Arial" size:20.0];
+		cell.textLabel.font = [UIFont fontWithName:@"Arial" size:18.0];
+
 		// textField setup
 		cell.textField = [[UITextField alloc] initWithFrame:CGRectZero];
 		cell.textField.clearsOnBeginEditing = NO;
@@ -778,6 +782,7 @@
 	[self selectCell:indexPath];
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 	TextFieldCell *cell = (TextFieldCell*)selectedCell;
+	cell.textField.borderStyle = UITextBorderStyleBezel;
 	cell.textField.text = cell.textLabel.text;
 	cell.textField.font = cell.textLabel.font;
 	cell.textField.textColor = [UIColor blackColor];
