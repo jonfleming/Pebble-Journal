@@ -52,6 +52,8 @@
 		C779E7371273CC1C00A309A0 /* yellow_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7151273CC1C00A309A0 /* yellow_background.png */; };
 		C779E73A1273CEB900A309A0 /* Clock_pp.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7381273CEB900A309A0 /* Clock_pp.png */; };
 		C779E73B1273CEB900A309A0 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7391273CEB900A309A0 /* clock.png */; };
+		C77D39631298A33D00A7F588 /* arrowdown.png in Resources */ = {isa = PBXBuildFile; fileRef = C77D39611298A33D00A7F588 /* arrowdown.png */; };
+		C77D39641298A33D00A7F588 /* arrowup.png in Resources */ = {isa = PBXBuildFile; fileRef = C77D39621298A33D00A7F588 /* arrowup.png */; };
 		C77D516F11D71D2000239A12 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C77D516C11D71D2000239A12 /* ItemViewController.m */; };
 		C77D517011D71D2000239A12 /* LinesView.m in Sources */ = {isa = PBXBuildFile; fileRef = C77D516E11D71D2000239A12 /* LinesView.m */; };
 		C77D517511D71DE000239A12 /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77D517411D71DE000239A12 /* ItemView.xib */; };
@@ -65,6 +67,9 @@
 		C77E9BFC1246B09A00FF22C4 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = C77E9BF71246B09A00FF22C4 /* Item.m */; };
 		C77E9BFD1246B09A00FF22C4 /* NoteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C77E9BF91246B09A00FF22C4 /* NoteItem.m */; };
 		C77E9BFE1246B09A00FF22C4 /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C77E9BFB1246B09A00FF22C4 /* ListItem.m */; };
+		C77F596F12BF0862001182E7 /* icon_send.png in Resources */ = {isa = PBXBuildFile; fileRef = C77F596E12BF0862001182E7 /* icon_send.png */; };
+		C77F597112BF0C9E001182E7 /* icon_send2.png in Resources */ = {isa = PBXBuildFile; fileRef = C77F597012BF0C9E001182E7 /* icon_send2.png */; };
+		C77F597312BF2A0F001182E7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77F597212BF2A0F001182E7 /* MessageUI.framework */; };
 		C7806517124E78AD0058B47C /* Resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7806516124E78AD0058B47C /* Resource.plist */; };
 		C7810B391228AABA009EFAE2 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7810B371228AAB9009EFAE2 /* TDBadgedCell.m */; };
 		C7810C4411FF219D001E2F15 /* NotelistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7810C4311FF219D001E2F15 /* NotelistViewController.m */; };
@@ -147,6 +152,8 @@
 		C779E7381273CEB900A309A0 /* Clock_pp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock_pp.png; sourceTree = "<group>"; };
 		C779E7391273CEB900A309A0 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		C77B13A61232EFEF005385A4 /* Pebble 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 7.xcdatamodel"; sourceTree = "<group>"; };
+		C77D39611298A33D00A7F588 /* arrowdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowdown.png; sourceTree = "<group>"; };
+		C77D39621298A33D00A7F588 /* arrowup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowup.png; sourceTree = "<group>"; };
 		C77D516B11D71D2000239A12 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		C77D516C11D71D2000239A12 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
 		C77D516D11D71D2000239A12 /* LinesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinesView.h; sourceTree = "<group>"; };
@@ -170,6 +177,9 @@
 		C77E9BF91246B09A00FF22C4 /* NoteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteItem.m; sourceTree = "<group>"; };
 		C77E9BFA1246B09A00FF22C4 /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItem.h; sourceTree = "<group>"; };
 		C77E9BFB1246B09A00FF22C4 /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItem.m; sourceTree = "<group>"; };
+		C77F596E12BF0862001182E7 /* icon_send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_send.png; sourceTree = "<group>"; };
+		C77F597012BF0C9E001182E7 /* icon_send2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_send2.png; sourceTree = "<group>"; };
+		C77F597212BF2A0F001182E7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C7803CB9120D2C59009454A5 /* Pebble 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 6.xcdatamodel"; sourceTree = "<group>"; };
 		C7806516124E78AD0058B47C /* Resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Resource.plist; sourceTree = "<group>"; };
 		C7810B371228AAB9009EFAE2 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
@@ -223,6 +233,7 @@
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				280420C1108EA07E000629CD /* CoreData.framework in Frameworks */,
 				C74A65541218ED4400921EA3 /* AVFoundation.framework in Frameworks */,
+				C77F597312BF2A0F001182E7 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +303,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 				280420C0108EA07E000629CD /* CoreData.framework */,
+				C77F597212BF2A0F001182E7 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -341,6 +353,10 @@
 		C77DBF2211E8F1E300C021DB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C77F597012BF0C9E001182E7 /* icon_send2.png */,
+				C77F596E12BF0862001182E7 /* icon_send.png */,
+				C77D39611298A33D00A7F588 /* arrowdown.png */,
+				C77D39621298A33D00A7F588 /* arrowup.png */,
 				C779E7381273CEB900A309A0 /* Clock_pp.png */,
 				C779E7391273CEB900A309A0 /* clock.png */,
 				C779E6EB1273CC1B00A309A0 /* Default-Landscape.png */,
@@ -464,6 +480,7 @@
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Pebble" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -533,6 +550,10 @@
 				C779E7371273CC1C00A309A0 /* yellow_background.png in Resources */,
 				C779E73A1273CEB900A309A0 /* Clock_pp.png in Resources */,
 				C779E73B1273CEB900A309A0 /* clock.png in Resources */,
+				C77D39631298A33D00A7F588 /* arrowdown.png in Resources */,
+				C77D39641298A33D00A7F588 /* arrowup.png in Resources */,
+				C77F596F12BF0862001182E7 /* icon_send.png in Resources */,
+				C77F597112BF0C9E001182E7 /* icon_send2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +644,7 @@
 				PRODUCT_NAME = "Pebble Journal";
 				PROVISIONING_PROFILE = "25933D0D-9291-4B34-BE68-26DB110C64E7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25933D0D-9291-4B34-BE68-26DB110C64E7";
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -640,7 +661,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25933D0D-9291-4B34-BE68-26DB110C64E7";
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -657,7 +678,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AD80AC9-92CC-4284-9917-CA5DC2F2DA1E";
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Distribution;

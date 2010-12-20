@@ -183,7 +183,32 @@
 }
 
 #pragma mark -
+#pragma mark Mail Handler
+-(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
 #pragma mark Toolbar button handlers
+- (IBAction)sendNote:(id)sender {
+	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+	picker.mailComposeDelegate = self;
+	
+	[picker setSubject:titleLabel.text];
+	
+	/*
+	UIImage *roboPic = [UIImage imageNamed:@"RobotWithPencil.jpg"];
+	NSData *imageData = UIImageJPEGRepresentation(roboPic, 1);
+	[picker addAttachmentData:imageData mimeType:@"image/jpg" fileName:@"RobotWithPencil.jpg"];
+	*/
+	
+	NSString *emailBody = notepadView.text;
+	[picker setMessageBody:emailBody isHTML:NO];
+	
+	[self presentModalViewController:picker animated:YES];
+	[picker release];	
+}
+
 - (IBAction)timestamp:(id)sender {
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	NSString *text = [Utility formatTime:[NSDate date]];

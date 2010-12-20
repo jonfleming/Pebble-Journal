@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 #import "TabViewBaseController.h"
 
 @class DetailViewController;
 @class LinesView;
 
-@interface NotepadViewController : TabViewBaseController <UITextViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate> {
+@interface NotepadViewController : TabViewBaseController <UITextViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate> {
 	IBOutlet LinesView *linesView;
 	IBOutlet UITextView *notepadView;
 
@@ -33,6 +35,7 @@
 - (void)positionDateLabel;
 - (IBAction)showNotelist:(id)sender;
 - (IBAction)timestamp:(id)sender;
+- (IBAction)sendNote:(id)sender;
 - (CGFloat)lineHeight;
 - (IBAction)insertNewObject:(id)sender;
 - (void)addGestureRecognizer:(UIView *)view;
