@@ -91,6 +91,7 @@
 		C785468411D43D8200A303C1 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C785468311D43D8200A303C1 /* ListView.xib */; };
 		C7854CC211DE7FDC00A303C1 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854CC111DE7FDC00A303C1 /* TextFieldCell.m */; };
 		C78730591250F8F2000AC708 /* Pebble.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C78730581250F8F2000AC708 /* Pebble.sqlite */; };
+		C788B23412DC7CAA0021D469 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = C788B23312DC7CAA0021D469 /* checked.png */; };
 		C7BA802F1200BDB400B65AFA /* NoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA802E1200BDB400B65AFA /* NoteTableViewController.m */; };
 		C7BA804A1200C08000B65AFA /* NotelistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA80491200C08000B65AFA /* NotelistCell.m */; };
 		C7FC315411F3673400902899 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FC315311F3673400902899 /* TextFieldCell.xib */; };
@@ -216,6 +217,7 @@
 		C7854CC011DE7FDC00A303C1 /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
 		C7854CC111DE7FDC00A303C1 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
 		C78730581250F8F2000AC708 /* Pebble.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pebble.sqlite; sourceTree = "<group>"; };
+		C788B23312DC7CAA0021D469 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		C7BA802D1200BDB400B65AFA /* NoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewController.h; sourceTree = "<group>"; };
 		C7BA802E1200BDB400B65AFA /* NoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewController.m; sourceTree = "<group>"; };
 		C7BA80481200C08000B65AFA /* NotelistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotelistCell.h; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 		C77DBF2211E8F1E300C021DB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C788B23312DC7CAA0021D469 /* checked.png */,
 				C77F597012BF0C9E001182E7 /* icon_send2.png */,
 				C77F596E12BF0862001182E7 /* icon_send.png */,
 				C77D39611298A33D00A7F588 /* arrowdown.png */,
@@ -554,6 +557,7 @@
 				C77D39641298A33D00A7F588 /* arrowup.png in Resources */,
 				C77F596F12BF0862001182E7 /* icon_send.png in Resources */,
 				C77F597112BF0C9E001182E7 /* icon_send2.png in Resources */,
+				C788B23412DC7CAA0021D469 /* checked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

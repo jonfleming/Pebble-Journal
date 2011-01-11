@@ -211,7 +211,7 @@
 
 - (IBAction)timestamp:(id)sender {
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
-	NSString *text = [Utility formatTime:[NSDate date]];
+	NSString *text = [NSString stringWithFormat:@"%@ %@",[Utility formatDate:[NSDate date]],[Utility formatTime:[NSDate date]]];
 
 	// Save a copy of the system pasteboard's items
 	UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
