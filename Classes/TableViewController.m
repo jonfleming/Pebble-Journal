@@ -52,6 +52,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	
+	[self report];
+	
+	// called when view is reloaded - force reinitializing of views
+	for (int index=0; index<3; index++) {
+		[listViewController.detailViewController.viewStatusArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:NO]];
+	}
+	
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
 }

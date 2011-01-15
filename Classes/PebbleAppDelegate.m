@@ -32,16 +32,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
     
+	[self applicationInit];		
+	return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	[self applicationInit];
+}
+
+- (void)applicationInit {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	rootViewController.protect = [defaults boolForKey:@"passwordProtect"];
 	NSString *password = [defaults stringForKey:@"password"];
-		
+	
 	if ([password length] == 0) {
 		rootViewController.protect = FALSE;
 	}
 	
 	rootViewController.managedObjectContext = self.managedObjectContext;
-
+	
 	// Add the split view controller's view to the window and display.
 	[window addSubview:splitViewController.view];
 	[window makeKeyAndVisible];
@@ -55,18 +64,22 @@
 		
 		rootViewController.resourceArray = thisArray;
 	}	
-
+	
 	if (rootViewController.protect) {
 		rootViewController.postPasswordAction = @selector(performSearch);
 		[rootViewController performSelector:@selector(promptForPassword:) withObject:PasswordPebble afterDelay:0.3];
-	}
-	
-	return YES;
+	}	
 }
 
 /**
  applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
  */
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	[self applicationWillTerminate:application];
+}
+
 - (void)applicationWillTerminate:(UIApplication *)application {
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	NSError *error = nil;

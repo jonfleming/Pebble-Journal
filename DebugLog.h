@@ -5,6 +5,9 @@
 //  Created by techion on 8/8/10.
 //  Copyright 2010 Jon Fleming. All rights reserved.
 //
+#include <sys/types.h>
+#include <unistd.h>
+
 #define D_SEVERE	0
 #define D_ERROR		1
 #define D_WARNING	2

@@ -33,4 +33,5 @@
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 
+- (void)applicationInit;
 @end
