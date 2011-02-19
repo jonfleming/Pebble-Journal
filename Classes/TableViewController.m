@@ -157,6 +157,7 @@
 }
 
 - (void)addGestureRecognizer:(UIView *)view {
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panHandler:)];
 	recognizer.delegate = self;
 	[view addGestureRecognizer:recognizer];
@@ -179,16 +180,18 @@
 		OK = NO;
 	}
 	
-	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, YESNO(OK));
+	DebugLog(D_INFO, @"%s %@", __FUNCTION__, YESNO(OK));
 	return OK;
 }
 
 - (void)panHandler:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	CGPoint point;
+	CGPoint temp;
 
 	switch (recognizer.state) {
 		case UIGestureRecognizerStateBegan:
-			DebugLog(D_VERBOSE, @"--- begin");			
+			DebugLog(D_INFO, @"--- begin");			
 			if (dragImage != nil) {
 				[dragImage release];
 			}
@@ -197,13 +200,17 @@
 			break;
 
 		case UIGestureRecognizerStateChanged:
-			dragImage.center = [recognizer locationInView:[[UIApplication sharedApplication] keyWindow]];
+			point = [recognizer locationInView:nil]; //[[UIApplication sharedApplication] keyWindow]];
+			temp.x = point.y;
+			temp.y = point.x;
+			
+			dragImage.center = point;
 			lastLocation = [recognizer locationInView:listViewController.detailViewController.rootViewController.tableView];
-			DebugLog(D_VERBOSE, @"--- change location: %f, %f", dragImage.center.x, dragImage.center.y);
+			DebugLog(D_INFO, @"--- change location: %f, %f", dragImage.center.x, dragImage.center.y);
 			break;
 
 		case UIGestureRecognizerStateEnded:
-			DebugLog(D_VERBOSE, @"--- end");
+			DebugLog(D_INFO, @"--- end");
 			[dragImage removeFromSuperview];
 			dragImage = nil;
 			
@@ -242,7 +249,7 @@
 }
 
 - (void)createDragImage:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	UIGraphicsBeginImageContext(recognizer.view.frame.size);
 	[recognizer.view.layer renderInContext:UIGraphicsGetCurrentContext()];
 	[self drawBorder:UIGraphicsGetCurrentContext() size:recognizer.view.frame.size];
@@ -253,7 +260,7 @@
 	dragImage.alpha = 0.5;
 	
 	[self rotateDragImage];
-	dragImage.center = [recognizer locationInView:[[UIApplication sharedApplication] keyWindow]];
+	dragImage.center = [recognizer locationInView:nil];
 	[[[UIApplication sharedApplication] keyWindow] addSubview:dragImage];
 	
 	[cellImage release];
@@ -294,6 +301,7 @@
 			break;
 	}
 	dragImage.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(angle));
+	DebugLog(D_INFO, @"%s angle:%2.2f", __FUNCTION__, angle);
 }
 
 #pragma mark -
