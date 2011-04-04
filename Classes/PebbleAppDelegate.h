@@ -34,4 +34,5 @@
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 
 - (void)applicationInit;
+- (void)saveState;
 @end

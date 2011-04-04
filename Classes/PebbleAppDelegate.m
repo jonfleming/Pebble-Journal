@@ -30,17 +30,25 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
     
 	[self applicationInit];		
 	return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	[self applicationInit];
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+}
+
+
 - (void)applicationInit {
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	rootViewController.protect = [defaults boolForKey:@"passwordProtect"];
 	NSString *password = [defaults stringForKey:@"password"];
@@ -75,13 +83,26 @@
  applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
  */
 
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	[self saveState];
+}
+
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
-	[self applicationWillTerminate:application];
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	[self saveState];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	[self saveState];
+}
+
+- (void)saveState {
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	[detailViewController saveNote];
+	
 	NSError *error = nil;
     if (managedObjectContext != nil) {
 		DebugLog(D_FINER, @"--- Saving on Exit");
@@ -91,7 +112,6 @@
         } 
     }
 }
-
 
 #pragma mark -
 #pragma mark Core Data stack
@@ -259,7 +279,6 @@
 
 #pragma mark -
 #pragma mark Memory management
-
 - (void)dealloc {
 	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 

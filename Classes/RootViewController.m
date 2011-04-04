@@ -47,7 +47,7 @@
 #pragma mark View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
     self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
 	
@@ -71,6 +71,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	int section = [defaults integerForKey:@"section"];
 	int row = [defaults integerForKey:@"row"];
+	DebugLog(D_INFO, @"Section: %d  Row: %d", section, row);
 	self.lastItemPath = [NSIndexPath indexPathForRow:row inSection:section];		
 }
 
@@ -211,8 +212,8 @@
 	// when reloading data, configure the view to the last (current) item selected
 	if (indexPath.row == lastItemPath.row && indexPath.section == lastItemPath.section)
 	{
-		DebugLog(D_FINER, @"--- lastItemPath: %@", lastItemPath);
-		DebugLog(D_FINER, @"--- Item: %@  row: %d", theItem.itemTitle, [theItem.lastNoteItemRow intValue]);
+		DebugLog(D_INFO, @"--- lastItemPath: %@", lastItemPath);
+		DebugLog(D_INFO, @"--- Item: %@  row: %d", theItem.itemTitle, [theItem.lastNoteItemRow intValue]);
 
 		// triggers ConfigureView
 		if (detailViewController.item != theItem) {

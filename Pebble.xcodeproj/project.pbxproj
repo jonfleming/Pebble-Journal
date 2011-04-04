@@ -52,6 +52,7 @@
 		C779E7371273CC1C00A309A0 /* yellow_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7151273CC1C00A309A0 /* yellow_background.png */; };
 		C779E73A1273CEB900A309A0 /* Clock_pp.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7381273CEB900A309A0 /* Clock_pp.png */; };
 		C779E73B1273CEB900A309A0 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = C779E7391273CEB900A309A0 /* clock.png */; };
+		C77BB9FE134A37FC00069CC5 /* Checklist_seg.png in Resources */ = {isa = PBXBuildFile; fileRef = C77BB9FD134A37FC00069CC5 /* Checklist_seg.png */; };
 		C77D39631298A33D00A7F588 /* arrowdown.png in Resources */ = {isa = PBXBuildFile; fileRef = C77D39611298A33D00A7F588 /* arrowdown.png */; };
 		C77D39641298A33D00A7F588 /* arrowup.png in Resources */ = {isa = PBXBuildFile; fileRef = C77D39621298A33D00A7F588 /* arrowup.png */; };
 		C77D516F11D71D2000239A12 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C77D516C11D71D2000239A12 /* ItemViewController.m */; };
@@ -153,6 +154,7 @@
 		C779E7381273CEB900A309A0 /* Clock_pp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock_pp.png; sourceTree = "<group>"; };
 		C779E7391273CEB900A309A0 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		C77B13A61232EFEF005385A4 /* Pebble 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Pebble 7.xcdatamodel"; sourceTree = "<group>"; };
+		C77BB9FD134A37FC00069CC5 /* Checklist_seg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checklist_seg.png; sourceTree = "<group>"; };
 		C77D39611298A33D00A7F588 /* arrowdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowdown.png; sourceTree = "<group>"; };
 		C77D39621298A33D00A7F588 /* arrowup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowup.png; sourceTree = "<group>"; };
 		C77D516B11D71D2000239A12 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 		C77DBF2211E8F1E300C021DB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C77BB9FD134A37FC00069CC5 /* Checklist_seg.png */,
 				C788B23312DC7CAA0021D469 /* checked.png */,
 				C77F597012BF0C9E001182E7 /* icon_send2.png */,
 				C77F596E12BF0862001182E7 /* icon_send.png */,
@@ -558,6 +561,7 @@
 				C77F596F12BF0862001182E7 /* icon_send.png in Resources */,
 				C77F597112BF0C9E001182E7 /* icon_send2.png in Resources */,
 				C788B23412DC7CAA0021D469 /* checked.png in Resources */,
+				C77BB9FE134A37FC00069CC5 /* Checklist_seg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

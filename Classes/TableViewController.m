@@ -157,7 +157,7 @@
 }
 
 - (void)addGestureRecognizer:(UIView *)view {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panHandler:)];
 	recognizer.delegate = self;
 	[view addGestureRecognizer:recognizer];
@@ -180,18 +180,18 @@
 		OK = NO;
 	}
 	
-	DebugLog(D_INFO, @"%s %@", __FUNCTION__, YESNO(OK));
+	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, YESNO(OK));
 	return OK;
 }
 
 - (void)panHandler:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	CGPoint point;
 	CGPoint temp;
 
 	switch (recognizer.state) {
 		case UIGestureRecognizerStateBegan:
-			DebugLog(D_INFO, @"--- begin");			
+			DebugLog(D_TRACE, @"--- begin");			
 			if (dragImage != nil) {
 				[dragImage release];
 			}
@@ -206,11 +206,11 @@
 			
 			dragImage.center = point;
 			lastLocation = [recognizer locationInView:listViewController.detailViewController.rootViewController.tableView];
-			DebugLog(D_INFO, @"--- change location: %f, %f", dragImage.center.x, dragImage.center.y);
+			DebugLog(D_TRACE, @"--- change location: %f, %f", dragImage.center.x, dragImage.center.y);
 			break;
 
 		case UIGestureRecognizerStateEnded:
-			DebugLog(D_INFO, @"--- end");
+			DebugLog(D_TRACE, @"--- end");
 			[dragImage removeFromSuperview];
 			dragImage = nil;
 			
@@ -249,7 +249,7 @@
 }
 
 - (void)createDragImage:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	UIGraphicsBeginImageContext(recognizer.view.frame.size);
 	[recognizer.view.layer renderInContext:UIGraphicsGetCurrentContext()];
 	[self drawBorder:UIGraphicsGetCurrentContext() size:recognizer.view.frame.size];
@@ -301,7 +301,7 @@
 			break;
 	}
 	dragImage.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(angle));
-	DebugLog(D_INFO, @"%s angle:%2.2f", __FUNCTION__, angle);
+	DebugLog(D_TRACE, @"%s angle:%2.2f", __FUNCTION__, angle);
 }
 
 #pragma mark -

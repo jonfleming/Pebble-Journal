@@ -32,7 +32,7 @@
 }
 
 - (void)selectCell:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s path: %@", __FUNCTION__, indexPath);
+	DebugLog(D_INFO, @"%s path: %@", __FUNCTION__, indexPath);
 	selectedRow = indexPath.row;
 	// Note: can't call setSelectedCell from here because cellForRowAtIndexPath calls configureCell and causes an endless loop
 	
@@ -45,7 +45,7 @@
 	}
 	
 	noteItem = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	DebugLog(D_FINER, @"item: %@", listViewController.detailViewController.item.itemTitle);
+	DebugLog(D_INFO, @"item: %@  Row: %d", listViewController.detailViewController.item.itemTitle, row);
 	
 	listViewController.detailViewController.item.lastNoteItemRow = [NSNumber numberWithInt:row];
 	[self updateNotepadView];
@@ -143,7 +143,7 @@
 	}
 	
 	if (detailViewController.item.lastNoteItemRow != nil) {
-		DebugLog(D_VERBOSE, @"   lastNoteItemRow: %d", [detailViewController.item.lastNoteItemRow intValue]);
+		DebugLog(D_INFO, @"   lastNoteItemRow: %d", [detailViewController.item.lastNoteItemRow intValue]);
 	}
 
 	DebugLog(D_VERBOSE, @"checking noteItem.title");
@@ -251,7 +251,6 @@
 		DebugLog(D_ERROR, @"=== Error: row is nil");
 		DebugBreak();
 	}
-	DebugLog(D_FINE, @"--- row: %d  title: %@", indexPath.row, row.title);
 
     cell.textLabel.text = [Utility formatDate:([listViewController.detailViewController.item.sortField isEqualToString:@"modifiedDate"] ?
 		row.modifiedDate : row.creationDate)];
@@ -267,6 +266,7 @@
 	if ([listViewController.detailViewController.item.itemType intValue] == NOTEPAD) {
 		if (listViewController.detailViewController.item.lastNoteItemRow != nil) {
 			if (indexPath.row == [listViewController.detailViewController.item.lastNoteItemRow intValue]) {
+				DebugLog(D_INFO, @"--- row: %d  title: %@", indexPath.row, row.title);
 				[self selectCell:indexPath];
 				[self setSelectedCell:cell];
 			}
@@ -275,7 +275,7 @@
 }
 
 - (void)addGestureRecognizer:(UIView *)view {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panHandler:)];
 	recognizer.delegate = self;
 	[view addGestureRecognizer:recognizer];
@@ -283,14 +283,14 @@
 }
 
 - (void)panHandler:(UIPanGestureRecognizer *)recognizer {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 
 	CGPoint point;
 	CGPoint temp;
 
 	switch (recognizer.state) {
 		case UIGestureRecognizerStateBegan:
-			DebugLog(D_INFO, @"--- begin");			
+			DebugLog(D_TRACE, @"--- begin");			
 			if (dragImage != nil) {
 				[dragImage release];
 			}
@@ -304,11 +304,11 @@
 			
 			dragImage.center = point;
 			lastLocation = [recognizer locationInView:listViewController.detailViewController.rootViewController.tableView];
-			DebugLog(D_INFO, @"--- image: %f, %f  point: %f, %f  temp: %f, %f", dragImage.center.x, dragImage.center.y, point.x, point.y, temp.x, temp.y);
+			DebugLog(D_TRACE, @"--- image: %f, %f  point: %f, %f  temp: %f, %f", dragImage.center.x, dragImage.center.y, point.x, point.y, temp.x, temp.y);
 			break;
 			
 		case UIGestureRecognizerStateEnded:
-			DebugLog(D_INFO, @"--- end");
+			DebugLog(D_TRACE, @"--- end");
 			[dragImage removeFromSuperview];
 			dragImage = nil;
 			

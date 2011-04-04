@@ -41,7 +41,7 @@
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
  */
 - (void)setItem:(Item *)managedObject {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	if (managedObject == nil) {
 		[item release];
 		item = nil;
@@ -152,7 +152,7 @@
  */
 - (void)configureView:(NSUInteger)index {
     // Update the user interface for the detail item.
-	DebugLog(D_TRACE, @"%s view:%d", __FUNCTION__, index);
+	DebugLog(D_INFO, @"%s view:%d", __FUNCTION__, index);
 
 	if (item == nil) {
 		return;
@@ -174,7 +174,7 @@
 		 filtered = TRUE;
 	 }
 	 
-	DebugLog(D_VERBOSE, @"--- selected: %d  saved: %d", indexPath.row, [item.lastNoteItemRow intValue]);
+	DebugLog(D_INFO, @"--- selected: %d  saved: %d", indexPath.row, [item.lastNoteItemRow intValue]);
 	
 	switch (index) {
 		case NOTELIST:
@@ -190,9 +190,12 @@
 			   lastNoteItemRow doesn't exist
 					use last row or create new
 			 */
-			rows = [noteTableViewController tableView:tableView numberOfRowsInSection:0];
+			
+			rows = [noteTableViewController tableView:tableView numberOfRowsInSection:0];			
 			if (item.lastNoteItemRow != nil) {
 				row = [item.lastNoteItemRow intValue];
+				DebugLog(D_INFO, @"--- Rows: %d  Row: %d", rows, row);
+
 				if (row < rows) {
 					if (indexPath == nil || indexPath.row != row) {
 						[noteTableViewController selectCell:[NSIndexPath indexPathForRow:row inSection:0]];
@@ -305,14 +308,14 @@
 #pragma mark -
 #pragma mark Save Details 
 - (UITableViewCell *)currentCell {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	NSIndexPath	*indexPath = [[rootViewController fetchedResultsController] indexPathForObject:item];
 	return [rootViewController.tableView cellForRowAtIndexPath:indexPath];
 }
 
 - (void)saveItem {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
-	DebugLog(D_VERBOSE, @"--- Item: %@", item.itemTitle);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"--- Item: %@", item.itemTitle);
 	if (item != nil) {
 		NSManagedObjectContext *context = rootViewController.managedObjectContext;
 		[rootViewController saveObjectContext:context];
@@ -320,8 +323,8 @@
 }
 
 - (void)saveNote {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
-	DebugLog(D_VERBOSE, @"--- Item: %@  NoteItem: %@  Dirty: %@", item.itemTitle, notepadViewController.notepadView.text, YESNO(notepadViewController.dirty));
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"--- Item: %@  NoteItem: %@  Dirty: %@", item.itemTitle, notepadViewController.notepadView.text, YESNO(notepadViewController.dirty));
 	if (item == nil) {
 		DebugLog(D_ERROR, @"=== item is nil");
 		return;
@@ -344,11 +347,11 @@
 }
 
 - (void)savePosition {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	int lastRow = [[rootViewController lastItemPath] row];
 	int lastSection = [[rootViewController lastItemPath] section];
-	DebugLog(D_VERBOSE, @"--- lastRow: %d  lastSection: %d", lastRow, lastSection);
+	DebugLog(D_INFO, @"--- lastRow: %d  lastSection: %d", lastRow, lastSection);
 	
 	NSNumber *rowObject = [NSNumber numberWithInt:lastRow];
 	NSNumber *sectionObject = [NSNumber numberWithInt:lastSection];
@@ -565,7 +568,7 @@
 	
 	DebugLog(D_FINE, @"contentVew.frame: %@", NSStringFromCGSize(notepadViewController.notepadView.contentSize));
 
-	DebugLog(D_INFO, @"notelist:%@  checklist:%@  editing:%@  inserting:%@  dirty:%@  changingFocus:%@  keyboardUp:%@", 
+	DebugLog(D_TRACE, @"notelist:%@  checklist:%@  editing:%@  inserting:%@  dirty:%@  changingFocus:%@  keyboardUp:%@", 
 			 NSStringFromCGRect(notelistViewController.keyboardView.frame),
 			 NSStringFromCGRect(checklistViewController.keyboardView.frame),
 			 YESNO(checklistViewController.editing),
@@ -702,7 +705,7 @@
 	
 	newFrame.size.height += change;
 
-	DebugLog(D_INFO, @"--- Scroll view: %@ (%d) frame: %@  change: %f  new frame: %@",
+	DebugLog(D_TRACE, @"--- Scroll view: %@ (%d) frame: %@  change: %f  new frame: %@",
 		  (viewController == checklistViewController ? @"checklist" : @"notelist"), tabBarController.selectedIndex,
 		  NSStringFromCGRect(keyboardView.frame), change, NSStringFromCGRect(newFrame));
 	
