@@ -71,7 +71,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	int section = [defaults integerForKey:@"section"];
 	int row = [defaults integerForKey:@"row"];
-	DebugLog(D_INFO, @"Section: %d  Row: %d", section, row);
+	DebugLog(D_CONFIG, @"NSUserDefaults  Section: %d  Row: %d", section, row);
 	self.lastItemPath = [NSIndexPath indexPathForRow:row inSection:section];		
 }
 
@@ -196,6 +196,7 @@
 	DebugLog(D_VERBOSE, @"%s path:%@", __FUNCTION__, indexPath);
     
     Item *theItem = [fetchedResultsController objectAtIndexPath:indexPath];
+        
     cell.textLabel.text = theItem.itemTitle;
 	cell.detailTextLabel.text = [Utility formatDate:theItem.modifiedDate];
 	//cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -213,7 +214,7 @@
 	if (indexPath.row == lastItemPath.row && indexPath.section == lastItemPath.section)
 	{
 		DebugLog(D_INFO, @"--- lastItemPath: %@", lastItemPath);
-		DebugLog(D_INFO, @"--- Item: %@  row: %d", theItem.itemTitle, [theItem.lastNoteItemRow intValue]);
+		DebugLog(D_INFO, @"--- itemTitle: %@  lastNoteItemRow: %d", theItem.itemTitle, [theItem.lastNoteItemRow intValue]);
 
 		// triggers ConfigureView
 		if (detailViewController.item != theItem) {
@@ -315,7 +316,7 @@
 
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 		DebugLog(D_VERBOSE, @"--- Deleting item: %@", detailViewController.item.itemTitle);
@@ -357,7 +358,7 @@
 }
 
 - (void)promptForPasswordWithIndex:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	detailViewController.item = nil;
 	self.lastItemPath = indexPath;	
 	[detailViewController configureView:0];
@@ -401,7 +402,7 @@
 // if globalUnlocked then skip item protect
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, alertView.title);
+	DebugLog(D_INFO, @"%s %@", __FUNCTION__, alertView.title);
 	int prompt = [[RootViewController passwordPrompts] indexOfObject:alertView.title];
 	[[(AlertPrompt *)alertView textField] resignFirstResponder]; 
 	DebugLog(D_VERBOSE, @"--- returned from resignFirstResponder");
@@ -523,7 +524,15 @@
 #pragma mark -
 #pragma mark Table view delegate
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	DebugLog(D_TRACE, @"%s %@", __FUNCTION__, indexPath);
+	DebugLog(D_INFO, @"%s %@  protected: %@", __FUNCTION__, indexPath, YESNO(self.protect));
+    
+    // check for password protection on Journal
+    if (self.protect)
+    {
+        [self promptForPassword:PasswordPebble];
+        return;
+    }
+
 	// Save pending changes
    	[detailViewController saveNote];
 	[detailViewController.checklistViewController.tableViewController updateObject];

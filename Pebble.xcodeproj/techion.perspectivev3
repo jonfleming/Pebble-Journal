@@ -231,8 +231,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -269,14 +267,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>080E96DDFE201D6D7F000001</string>
-								<string>C77D517311D71D5400239A12</string>
-								<string>C7848EAF11EC0D950029662E</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>C7848EAE11EC0CD60029662E</string>
 								<string>C7848EAD11EC0CCE0029662E</string>
-								<string>C77DBF2211E8F1E300C021DB</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -284,13 +277,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>61</integer>
-									<integer>41</integer>
+									<integer>15</integer>
+									<integer>13</integer>
+									<integer>11</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 882}, {208, 780}}</string>
+							<string>{{0, 0}, {208, 780}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -323,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>C7B9BA2912726807000EAA5E</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Notepad_seg.png</string>
+								<string>Pebble-Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>C7B9BA2A12726807000EAA5E</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Notepad_seg.png</string>
+										<string>Pebble-Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C77BBA04134A384200069CC5</string>
+										<string>C7841464136A696000D714CB</string>
 										<key>history</key>
 										<array>
 											<string>C77BB9B313384C0300069CC5</string>
@@ -348,7 +342,10 @@
 											<string>C77BB9F11339C67700069CC5</string>
 											<string>C77BBA01134A384200069CC5</string>
 											<string>C77BBA02134A384200069CC5</string>
-											<string>C77BBA03134A384200069CC5</string>
+											<string>C784145F136A696000D714CB</string>
+											<string>C7841460136A696000D714CB</string>
+											<string>C7841462136A696000D714CB</string>
+											<string>C7841463136A696000D714CB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -362,18 +359,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1210, 555}}</string>
+								<string>{{0, 0}, {1210, 549}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 39 1440 839 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>555pt</string>
+							<string>549pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>238pt</string>
+							<string>244pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -387,7 +384,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1224, -27}}</string>
+										<string>{{10, 27}, {1210, 217}}</string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -404,8 +401,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1210, 211}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 39 1440 839 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -464,7 +459,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1224, 211}}</string>
+										<string>{{10, 27}, {1210, 217}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 39 1440 839 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -492,11 +489,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>C77BB9B813384C0E00069CC5</string>
+				<string>C7841465136A696000D714CB</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>C77BB9B913384C0E00069CC5</string>
+				<string>C7841466136A696000D714CB</string>
 				<string>C7B9BA2912726807000EAA5E</string>
-				<string>C77BB9BA13384C0E00069CC5</string>
+				<string>C7841467136A696000D714CB</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -645,14 +642,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>C77BB9BB13384C0E00069CC5</string>
+				<string>C7841468136A696000D714CB</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>C77BB9BC13384C0E00069CC5</string>
-				<string>C77BB9BD13384C0E00069CC5</string>
-				<string>C77BB9BE13384C0E00069CC5</string>
-				<string>C77BB9BF13384C0E00069CC5</string>
-				<string>C7B9BA2912726807000EAA5E</string>
+				<string>C7841469136A696000D714CB</string>
+				<string>C784146A136A696000D714CB</string>
+				<string>C784146B136A696000D714CB</string>
+				<string>C784146C136A696000D714CB</string>
+				<string>C784146D136A696000D714CB</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>
@@ -686,8 +683,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>C77BB9C013384C0E00069CC5</string>
-		<string>C77BB9C113384C0E00069CC5</string>
+		<string>C784146E136A696000D714CB</string>
+		<string>C784146F136A696000D714CB</string>
 		<string>/Users/techion/Documents/Pebble-Journal/Pebble.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

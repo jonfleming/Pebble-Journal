@@ -45,7 +45,7 @@
 	}
 	
 	noteItem = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	DebugLog(D_INFO, @"item: %@  Row: %d", listViewController.detailViewController.item.itemTitle, row);
+	DebugLog(D_INFO, @"item: %@  indexPath.row: %d", listViewController.detailViewController.item.itemTitle, row);
 	
 	listViewController.detailViewController.item.lastNoteItemRow = [NSNumber numberWithInt:row];
 	[self updateNotepadView];
@@ -266,7 +266,7 @@
 	if ([listViewController.detailViewController.item.itemType intValue] == NOTEPAD) {
 		if (listViewController.detailViewController.item.lastNoteItemRow != nil) {
 			if (indexPath.row == [listViewController.detailViewController.item.lastNoteItemRow intValue]) {
-				DebugLog(D_INFO, @"--- row: %d  title: %@", indexPath.row, row.title);
+				DebugLog(D_INFO, @"--- indexPath.row: %d  title: %@", indexPath.row, row.title);
 				[self selectCell:indexPath];
 				[self setSelectedCell:cell];
 			}

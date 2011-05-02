@@ -25,7 +25,6 @@
 
 	IBOutlet UIPopoverController *popoverController;
 	IBOutlet UITabBarController *tabBarController;
-	IBOutlet UIPopoverController *editViewPopoverController;
 	
 	IBOutlet NotepadViewController *notepadViewController;
 	IBOutlet ChecklistViewController *checklistViewController;

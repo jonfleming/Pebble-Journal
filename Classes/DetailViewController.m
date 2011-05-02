@@ -88,6 +88,8 @@
 			// if active search go to notelist instead of notepad
 			index = NOTELIST;
 		}
+        
+        notelistViewController.detailViewController = self;
         [self configureView:index];
 	}
     
@@ -174,7 +176,7 @@
 		 filtered = TRUE;
 	 }
 	 
-	DebugLog(D_INFO, @"--- selected: %d  saved: %d", indexPath.row, [item.lastNoteItemRow intValue]);
+	DebugLog(D_INFO, @"--- indexPathForSelectedRow: %d  lastNoteItemRow: %d", indexPath.row, [item.lastNoteItemRow intValue]);
 	
 	switch (index) {
 		case NOTELIST:
@@ -194,7 +196,7 @@
 			rows = [noteTableViewController tableView:tableView numberOfRowsInSection:0];			
 			if (item.lastNoteItemRow != nil) {
 				row = [item.lastNoteItemRow intValue];
-				DebugLog(D_INFO, @"--- Rows: %d  Row: %d", rows, row);
+				DebugLog(D_INFO, @"--- numberOfRowsInSection: %d  lastNoteItemRow: %d", rows, row);
 
 				if (row < rows) {
 					if (indexPath == nil || indexPath.row != row) {
@@ -209,8 +211,8 @@
 				[noteTableViewController selectCell:[NSIndexPath indexPathForRow:(rows - 1) inSection:0]];
 			}
 			else {
-				[noteTableViewController insertNewObject:self];
-			}
+                [self showView:NOTELIST];
+            }
 
 			break;
 		
@@ -227,7 +229,7 @@
 }
 
 - (void) refreshAfterItemEdit {
-	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 
 	[rootViewController selectItem:item];
 	UITableViewCell *cell = [self currentCell];
@@ -308,14 +310,14 @@
 #pragma mark -
 #pragma mark Save Details 
 - (UITableViewCell *)currentCell {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
 	NSIndexPath	*indexPath = [[rootViewController fetchedResultsController] indexPathForObject:item];
 	return [rootViewController.tableView cellForRowAtIndexPath:indexPath];
 }
 
 - (void)saveItem {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
-	DebugLog(D_INFO, @"--- Item: %@", item.itemTitle);
+	DebugLog(D_TRACE, @"%s", __FUNCTION__);
+	DebugLog(D_TRACE, @"--- Item: %@  lastNoteItemRow: %d", item.itemTitle,[item.lastNoteItemRow intValue]);
 	if (item != nil) {
 		NSManagedObjectContext *context = rootViewController.managedObjectContext;
 		[rootViewController saveObjectContext:context];
@@ -324,7 +326,7 @@
 
 - (void)saveNote {
 	DebugLog(D_INFO, @"%s", __FUNCTION__);
-	DebugLog(D_INFO, @"--- Item: %@  NoteItem: %@  Dirty: %@", item.itemTitle, notepadViewController.notepadView.text, YESNO(notepadViewController.dirty));
+	DebugLog(D_INFO, @"--- Item: %@  NoteItem: %@  Dirty: %@  lastNoteItemRow: %d", item.itemTitle, notepadViewController.notepadView.text, YESNO(notepadViewController.dirty),[item.lastNoteItemRow intValue]);
 	if (item == nil) {
 		DebugLog(D_ERROR, @"=== item is nil");
 		return;
@@ -351,7 +353,7 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	int lastRow = [[rootViewController lastItemPath] row];
 	int lastSection = [[rootViewController lastItemPath] section];
-	DebugLog(D_INFO, @"--- lastRow: %d  lastSection: %d", lastRow, lastSection);
+	DebugLog(D_INFO, @"--- lastItemPath.row: %d  lastItemPath.section: %d", lastRow, lastSection);
 	
 	NSNumber *rowObject = [NSNumber numberWithInt:lastRow];
 	NSNumber *sectionObject = [NSNumber numberWithInt:lastSection];
@@ -464,7 +466,7 @@
 }
 
 - (void)initializeView:(NSUInteger)index {
-	DebugLog(D_TRACE, @"%s view:%d", __FUNCTION__, index);
+	DebugLog(D_INFO, @"%s view:%d", __FUNCTION__, index);
 
 	if (item == nil) {
 		return;
@@ -493,7 +495,7 @@
 }
 
 - (void)reloadData:(NSUInteger)index {
-	DebugLog(D_TRACE, @"%s view:%d", __FUNCTION__, index);
+	DebugLog(D_INFO, @"%s view:%d", __FUNCTION__, index);
 	
 	switch (index) {
 		case NOTELIST:
