@@ -33,6 +33,7 @@
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 
+- (BOOL)passwordProtected;
 - (void)applicationInit;
 - (void)saveState;
 @end

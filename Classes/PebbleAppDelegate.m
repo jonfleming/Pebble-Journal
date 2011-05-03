@@ -30,25 +30,29 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
-    
-	[self applicationInit];		
+	DebugLog(D_INFO, @"%s", __FUNCTION__);    
 	return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	DebugLog(D_INFO, @"%s", __FUNCTION__);
+
+    [self passwordProtected];
 	[self applicationInit];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    // called when coming out of background
 	DebugLog(D_INFO, @"%s", __FUNCTION__);
+    
+    if([self passwordProtected])
+    {
+        // do not show notepad or listview
+    }
 }
 
-
-- (void)applicationInit {
-	DebugLog(D_INFO, @"%s", __FUNCTION__);
+- (BOOL)passwordProtected {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	rootViewController.protect = [defaults boolForKey:@"passwordProtect"];
 	NSString *password = [defaults stringForKey:@"password"];
@@ -56,6 +60,11 @@
 	if ([password length] == 0) {
 		rootViewController.protect = FALSE;
 	}
+
+    return rootViewController.protect;
+}
+- (void)applicationInit {
+	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	
 	rootViewController.managedObjectContext = self.managedObjectContext;
 	
@@ -103,6 +112,12 @@
 	DebugLog(D_INFO, @"%s", __FUNCTION__);
 	[detailViewController saveNote];
 	
+    if ([self passwordProtected])
+    {
+        // if password protected close lastItem
+        detailViewController.item = nil;
+    }
+    
 	NSError *error = nil;
     if (managedObjectContext != nil) {
 		DebugLog(D_FINER, @"--- Saving on Exit");
@@ -111,6 +126,7 @@
 			DebugBreak();
         } 
     }
+    
 }
 
 #pragma mark -
