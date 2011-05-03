@@ -49,6 +49,7 @@
     if([self passwordProtected])
     {
         // do not show notepad or listview
+        //[rootViewController.tableView reloadData];
     }
 }
 
@@ -114,6 +115,9 @@
 	
     if ([self passwordProtected])
     {
+        rootViewController.protect = true;
+        [rootViewController.tableView reloadData];
+        
         // if password protected close lastItem
         detailViewController.item = nil;
     }

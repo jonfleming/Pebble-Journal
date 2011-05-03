@@ -287,6 +287,9 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if ([self protect]) {
+        return 0;
+    }
     return [[fetchedResultsController sections] count];
 }
 
