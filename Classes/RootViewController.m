@@ -269,8 +269,8 @@
 	[self.tableView reloadData];
     //[self.tableView selectRowAtIndexPath:insertionPath animated:YES scrollPosition:UITableViewScrollPositionTop];
     detailViewController.item = newManagedObject;
-	
-	[self tableView:self.tableView accessoryButtonTappedForRowWithIndexPath:lastItemPath];
+	[self.tableView setNeedsDisplay];
+    [self tableView:self.tableView accessoryButtonTappedForRowWithIndexPath:lastItemPath];
 }
 
 

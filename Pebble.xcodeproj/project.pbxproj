@@ -695,11 +695,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jon Fleming";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pebble_Prefix.pch;
 				INFOPLIST_FILE = "Pebble-Info.plist";
 				PRODUCT_NAME = "Pebble Journal";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AD80AC9-92CC-4284-9917-CA5DC2F2DA1E";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
